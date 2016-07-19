@@ -1,0 +1,56 @@
+// Path
+$fontsPath: '../fonts/';
+$imgPath: '../images/';
+$screen-md: 1025px !default;
+// Font family
+@font-face {
+    font-family: 'HelveticaNeueLTStd-Th';
+    src: url('#{$fontsPath}HelveticaNeueLTStd-Th.eot?#iefix') format('embedded-opentype'),
+    url('#{$fontsPath}HelveticaNeueLTStd-Th.otf') format('opentype'),
+    url('#{$fontsPath}HelveticaNeueLTStd-Th.woff') format('woff'),
+    url('#{$fontsPath}HelveticaNeueLTStd-Th.ttf') format('truetype'),
+    url('#{$fontsPath}HelveticaNeueLTStd-Th.svg#HelveticaNeueLTStd-Th') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueBold';
+    src: url('#{$fontsPath}HelveticaNeueBold.eot?#iefix') format('embedded-opentype'), 
+    url('#{$fontsPath}HelveticaNeueBold.woff') format('woff'), 
+    url('#{$fontsPath}HelveticaNeueBold.ttf') format('truetype'), 
+    url('#{$fontsPath}HelveticaNeueBold.svg#HelveticaNeueBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$font-awesome: 'FontAwesome';
+$font-sans-serif: Helvetica,
+Arial,
+sans-serif;
+$helvetica-neue: 'HelveticaNeueLTStd-Th',
+$font-sans-serif;
+$helvetica-bold: 'HelveticaNeueBold',
+$font-sans-serif;
+// Color
+$white: #fff;
+$black: #000;
+$dark-grey: #414042;
+$light-grey: #e3e4e4;
+$dark-blue: #001a34;
+$light-blue: #0079a0;
+$branch-color: #09183f;
+$vhFull: 100vh;
+$minVhFull: 900px;
+$minVhFullMobile: 540px;
+// Font-faceregular
+$light: 300;
+$regular: 400;
+$semi-bold: 600;
+$bold: 700;
+// Global Component
+$heightHeader: 70px;
+$heightSubHeader: 50px;
+// variables for mobile
+$heightHeaderMobile: 50px;
+$heightMenuItemsMobile: 45px;

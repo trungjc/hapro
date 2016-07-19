@@ -1,0 +1,22 @@
+head
+	meta(charset='utf-8')
+	title Fun runs
+	meta(name='description' content='')
+	meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')
+	link(rel="shortcut icon", href="images/favicon.ico" type="image/x-icon")
+	// Place favicon.ico and apple-touch-icon.png in the root directory
+
+	// build:css assets/css/vendor.css
+	link(rel='stylesheet' href='../bower_components/Swiper/dist/css/swiper.min.css')
+	// bower:css
+	// endbower
+	// endbuild
+
+	// build:css assets/css/main.css
+	link(rel='stylesheet' href='assets/css/main.css')
+	// endbuild
+
+	// build:js assets/js/modernizr.js
+	script(src='../bower_components/modernizr/modernizr.js')
+	// endbuild
+include ../includes/mixins.jade

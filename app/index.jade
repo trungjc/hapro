@@ -1,0 +1,526 @@
+extends layouts/default
+
+block content
+	.landing-tpl
+		.container
+			.row
+				section.hero-banner
+					img.hero-img(src="images/hero-banner.jpg", alt="")
+					.hero-banner-content
+						h1 Your race Your way
+						.p.big.des
+							p Across Australia fun runs bring communities together and celebrate everything we love about our cities. Whether you are out to beat a PB, having a great day with friends and family or dressed as your favourite superhero, Westpac supports all runners, every step of the way.
+							p Westpac is proud to support the City2 Run series across the country as well as the Adelaide Sunday Mail City-Bay in 2016.
+							.p.bold
+								p Join us at the start line and run your race, your way!
+				section.carousel
+					.tabs
+						.swiper-container
+							.swiper-wrapper
+								.swiper-slide.active(data-target="#brisbane") Brisbane
+								.swiper-slide(data-target="#perth") Perth
+								.swiper-slide(data-target="#sydney") Sydney
+								.swiper-slide(data-target="#canberra") Canberra
+								.swiper-slide(data-target="#adelaide") Adelaide
+								.swiper-slide(data-target="#melbourne") Melbourne
+							.swiper-button-prev
+							.swiper-button-next
+					.sliders
+						#brisbane.slider
+							.swiper-container
+								.swiper-wrapper
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img1.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo
+														img(src="images/slider/citysurf.png", alt="")
+													.brief-title
+														h3 Westpac is a proud supporter of the <i>Sun-Herald</i> City2Surf
+													.p
+														p Celebrating the best of Sydney and offering an incredible 14km course, participants can take on the challenge with friends, family and other racegoers in what will be a fun day out.
+														p From the Westpac Start Village at the start line, on course support stations to keep you motivated and entertained through to the celebrations in the Red Zone at the end of the race. Westpac will be there to support you every step of the way.
+													.p.bold 
+														p We look forward to seeing you at this years City2Surf!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img2.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Red Zone
+													.p
+														p For Westpac customers, this year’s Red Zone will be more colourful than ever. Channelling a festival feel, your VIP area offers a host of exclusive recovery options including:
+														ul
+															li Food
+															li Drinks
+															li Massages
+															li Plus a fun photo activation
+														p All Westpac customers are welcome. Red Zone wristbands can be collected at Expo before the big race. Or just flash your Westpac card or banking app to staff on the day.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img3.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Westpac Start Village
+													.p
+														p Join us in the start village as we get you prepped for your race, whether that be a place to meet, place to stretch or a place to hydrate and fuel up we’ll help you get ready to go.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img4.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo.westpac-logo
+														img(src="images/slider/big-logo.png", alt="")
+													.brief-title
+														h3 Your Westpac Foundation
+													.p
+														p Make your day a great one by supporting the Westpac Foundation as you take on the course.
+														p To show your support simply select ‘Westpac Foundation’ on the Charities checklist when you register and start fundraising!
+														p On race day, for every person who gives our Westpac Foundation grant recipients a high 5, Westpac will donate to the Westpac Foundation.!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img5.png", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Preperation
+													.p
+														p What is your training routine and how do you prepare for the race? Share your training hints and tips and your favourite running spots in your city @WestpacYourRace on Instagram.					
+								.swiper-pagination
+								.swiper-button-prev
+								.swiper-button-next
+								.swiper-logo
+									img(src="images/slider/slider_logo.png", alt="")
+						#perth.slider
+							.swiper-container
+								.swiper-wrapper
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img1.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo
+														img(src="images/slider/citysurf.png", alt="")
+													.brief-title
+														h3 Westpac is a proud supporter of the <i>Sun-Herald</i> City2Surf
+													.p
+														p Celebrating the best of Sydney and offering an incredible 14km course, participants can take on the challenge with friends, family and other racegoers in what will be a fun day out.
+														p From the Westpac Start Village at the start line, on course support stations to keep you motivated and entertained through to the celebrations in the Red Zone at the end of the race. Westpac will be there to support you every step of the way.
+													.p.bold 
+														p We look forward to seeing you at this years City2Surf!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img2.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Red Zone
+													.p
+														p For Westpac customers, this year’s Red Zone will be more colourful than ever. Channelling a festival feel, your VIP area offers a host of exclusive recovery options including:
+														ul
+															li Food
+															li Drinks
+															li Massages
+															li Plus a fun photo activation
+														p All Westpac customers are welcome. Red Zone wristbands can be collected at Expo before the big race. Or just flash your Westpac card or banking app to staff on the day.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img3.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Westpac Start Village
+													.p
+														p Join us in the start village as we get you prepped for your race, whether that be a place to meet, place to stretch or a place to hydrate and fuel up we’ll help you get ready to go.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img4.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo.westpac-logo
+														img(src="images/slider/big-logo.png", alt="")
+													.brief-title
+														h3 Your Westpac Foundation
+													.p
+														p Make your day a great one by supporting the Westpac Foundation as you take on the course.
+														p To show your support simply select ‘Westpac Foundation’ on the Charities checklist when you register and start fundraising!
+														p On race day, for every person who gives our Westpac Foundation grant recipients a high 5, Westpac will donate to the Westpac Foundation.!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img5.png", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Preperation
+													.p
+														p What is your training routine and how do you prepare for the race? Share your training hints and tips and your favourite running spots in your city @WestpacYourRace on Instagram.					
+								.swiper-pagination
+								.swiper-button-prev
+								.swiper-button-next
+								.swiper-logo
+									img(src="images/slider/slider_logo.png", alt="")
+						#sydney.slider
+							.swiper-container
+								.swiper-wrapper
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img1.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo
+														img(src="images/slider/citysurf.png", alt="")
+													.brief-title
+														h3 Westpac is a proud supporter of the <i>Sun-Herald</i> City2Surf
+													.p
+														p Celebrating the best of Sydney and offering an incredible 14km course, participants can take on the challenge with friends, family and other racegoers in what will be a fun day out.
+														p From the Westpac Start Village at the start line, on course support stations to keep you motivated and entertained through to the celebrations in the Red Zone at the end of the race. Westpac will be there to support you every step of the way.
+													.p.bold 
+														p We look forward to seeing you at this years City2Surf!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img2.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Red Zone
+													.p
+														p For Westpac customers, this year’s Red Zone will be more colourful than ever. Channelling a festival feel, your VIP area offers a host of exclusive recovery options including:
+														ul
+															li Food
+															li Drinks
+															li Massages
+															li Plus a fun photo activation
+														p All Westpac customers are welcome. Red Zone wristbands can be collected at Expo before the big race. Or just flash your Westpac card or banking app to staff on the day.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img3.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Westpac Start Village
+													.p
+														p Join us in the start village as we get you prepped for your race, whether that be a place to meet, place to stretch or a place to hydrate and fuel up we’ll help you get ready to go.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img4.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo.westpac-logo
+														img(src="images/slider/big-logo.png", alt="")
+													.brief-title
+														h3 Your Westpac Foundation
+													.p
+														p Make your day a great one by supporting the Westpac Foundation as you take on the course.
+														p To show your support simply select ‘Westpac Foundation’ on the Charities checklist when you register and start fundraising!
+														p On race day, for every person who gives our Westpac Foundation grant recipients a high 5, Westpac will donate to the Westpac Foundation.!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img5.png", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Preperation
+													.p
+														p What is your training routine and how do you prepare for the race? Share your training hints and tips and your favourite running spots in your city @WestpacYourRace on Instagram.					
+								.swiper-pagination
+								.swiper-button-prev
+								.swiper-button-next
+								.swiper-logo
+									img(src="images/slider/slider_logo.png", alt="")
+						#canberra.slider
+							.swiper-container
+								.swiper-wrapper
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img1.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo
+														img(src="images/slider/citysurf.png", alt="")
+													.brief-title
+														h3 Westpac is a proud supporter of the <i>Sun-Herald</i> City2Surf
+													.p
+														p Celebrating the best of Sydney and offering an incredible 14km course, participants can take on the challenge with friends, family and other racegoers in what will be a fun day out.
+														p From the Westpac Start Village at the start line, on course support stations to keep you motivated and entertained through to the celebrations in the Red Zone at the end of the race. Westpac will be there to support you every step of the way.
+													.p.bold 
+														p We look forward to seeing you at this years City2Surf!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img2.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Red Zone
+													.p
+														p For Westpac customers, this year’s Red Zone will be more colourful than ever. Channelling a festival feel, your VIP area offers a host of exclusive recovery options including:
+														ul
+															li Food
+															li Drinks
+															li Massages
+															li Plus a fun photo activation
+														p All Westpac customers are welcome. Red Zone wristbands can be collected at Expo before the big race. Or just flash your Westpac card or banking app to staff on the day.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img3.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Westpac Start Village
+													.p
+														p Join us in the start village as we get you prepped for your race, whether that be a place to meet, place to stretch or a place to hydrate and fuel up we’ll help you get ready to go.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img4.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo.westpac-logo
+														img(src="images/slider/big-logo.png", alt="")
+													.brief-title
+														h3 Your Westpac Foundation
+													.p
+														p Make your day a great one by supporting the Westpac Foundation as you take on the course.
+														p To show your support simply select ‘Westpac Foundation’ on the Charities checklist when you register and start fundraising!
+														p On race day, for every person who gives our Westpac Foundation grant recipients a high 5, Westpac will donate to the Westpac Foundation.!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img5.png", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Preperation
+													.p
+														p What is your training routine and how do you prepare for the race? Share your training hints and tips and your favourite running spots in your city @WestpacYourRace on Instagram.					
+								.swiper-pagination
+								.swiper-button-prev
+								.swiper-button-next
+								.swiper-logo
+									img(src="images/slider/slider_logo.png", alt="")
+						#adelaide.slider
+							.swiper-container
+								.swiper-wrapper
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img1.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo
+														img(src="images/slider/citysurf.png", alt="")
+													.brief-title
+														h3 Westpac is a proud supporter of the <i>Sun-Herald</i> City2Surf
+													.p
+														p Celebrating the best of Sydney and offering an incredible 14km course, participants can take on the challenge with friends, family and other racegoers in what will be a fun day out.
+														p From the Westpac Start Village at the start line, on course support stations to keep you motivated and entertained through to the celebrations in the Red Zone at the end of the race. Westpac will be there to support you every step of the way.
+													.p.bold 
+														p We look forward to seeing you at this years City2Surf!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img2.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Red Zone
+													.p
+														p For Westpac customers, this year’s Red Zone will be more colourful than ever. Channelling a festival feel, your VIP area offers a host of exclusive recovery options including:
+														ul
+															li Food
+															li Drinks
+															li Massages
+															li Plus a fun photo activation
+														p All Westpac customers are welcome. Red Zone wristbands can be collected at Expo before the big race. Or just flash your Westpac card or banking app to staff on the day.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img3.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Westpac Start Village
+													.p
+														p Join us in the start village as we get you prepped for your race, whether that be a place to meet, place to stretch or a place to hydrate and fuel up we’ll help you get ready to go.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img4.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo.westpac-logo
+														img(src="images/slider/big-logo.png", alt="")
+													.brief-title
+														h3 Your Westpac Foundation
+													.p
+														p Make your day a great one by supporting the Westpac Foundation as you take on the course.
+														p To show your support simply select ‘Westpac Foundation’ on the Charities checklist when you register and start fundraising!
+														p On race day, for every person who gives our Westpac Foundation grant recipients a high 5, Westpac will donate to the Westpac Foundation.!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img5.png", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Preperation
+													.p
+														p What is your training routine and how do you prepare for the race? Share your training hints and tips and your favourite running spots in your city @WestpacYourRace on Instagram.					
+								.swiper-pagination
+								.swiper-button-prev
+								.swiper-button-next
+								.swiper-logo
+									img(src="images/slider/slider_logo.png", alt="")
+						#melbourne.slider
+							.swiper-container
+								.swiper-wrapper
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img1.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo
+														img(src="images/slider/citysurf.png", alt="")
+													.brief-title
+														h3 Westpac is a proud supporter of the <i>Sun-Herald</i> City2Surf
+													.p
+														p Celebrating the best of Sydney and offering an incredible 14km course, participants can take on the challenge with friends, family and other racegoers in what will be a fun day out.
+														p From the Westpac Start Village at the start line, on course support stations to keep you motivated and entertained through to the celebrations in the Red Zone at the end of the race. Westpac will be there to support you every step of the way.
+													.p.bold 
+														p We look forward to seeing you at this years City2Surf!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img2.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Red Zone
+													.p
+														p For Westpac customers, this year’s Red Zone will be more colourful than ever. Channelling a festival feel, your VIP area offers a host of exclusive recovery options including:
+														ul
+															li Food
+															li Drinks
+															li Massages
+															li Plus a fun photo activation
+														p All Westpac customers are welcome. Red Zone wristbands can be collected at Expo before the big race. Or just flash your Westpac card or banking app to staff on the day.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img3.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Westpac Start Village
+													.p
+														p Join us in the start village as we get you prepped for your race, whether that be a place to meet, place to stretch or a place to hydrate and fuel up we’ll help you get ready to go.
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img4.jpg", alt="")
+											.col-sm-6
+												.brief
+													.brief-logo.westpac-logo
+														img(src="images/slider/big-logo.png", alt="")
+													.brief-title
+														h3 Your Westpac Foundation
+													.p
+														p Make your day a great one by supporting the Westpac Foundation as you take on the course.
+														p To show your support simply select ‘Westpac Foundation’ on the Charities checklist when you register and start fundraising!
+														p On race day, for every person who gives our Westpac Foundation grant recipients a high 5, Westpac will donate to the Westpac Foundation.!
+									.swiper-slide
+										.h100p
+											.col-sm-5
+												.row
+													.left-img
+														img(src="images/slider/img5.png", alt="")
+											.col-sm-6
+												.brief
+													.brief-title
+														h3 Your Preperation
+													.p
+														p What is your training routine and how do you prepare for the race? Share your training hints and tips and your favourite running spots in your city @WestpacYourRace on Instagram.					
+								.swiper-pagination
+								.swiper-button-prev
+								.swiper-button-next
+								.swiper-logo
+									img(src="images/slider/slider_logo.png", alt="")
