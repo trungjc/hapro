@@ -1,38 +1,50 @@
-header.header
-	.container
-		.row
-			.header-direction
-				.logo
-					a(href="#", title="Logo")
-						img(src="images/logo-funrun.png", alt="Logo funrun")
-				nav
-					ul.no-bullet.main-menu
-						li.menu-item
-							a(href="#", title="") Fun Runs
-							ul.no-bullet.sub-menu
-								li.sub-menu-item
-									a(href="#brisbane", title="") Brisbane
-								li.sub-menu-item
-									a(href="#perth", title="") Perth
-								li.sub-menu-item
-									a(href="#sydney", title="") Sydney
-								li.sub-menu-item
-									a(href="#canberra", title="") Canberra
-								li.sub-menu-item
-									a(href="#adelaide", title="") Adelaide
-								li.sub-menu-item
-									a(href="#melbourne", title="") Melbourne
-							.expand-sub
-						li.menu-item
-							a(href="#", title="") GIF Gallery
-						li.menu-item
-							a(href="#", title="") Race Face Photo
-			.header-visit-box
-				a(href="#", title="")
-					span Visit
-					| westpac.com.au
-			#nav-icon3
-				span
-				span
-				span
-				span
+header.header.navbar.navbar-inverse.navbar-fixed-top
+	.container-fluid
+		.navbar-header
+			button(data-target=".mobile-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed")
+				span.sr-only Toggle navigation
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			nav.mobile-navbar-collapse.collapse
+				span.icon-cross
+				.navbar-box
+					ul.nav.navbar-nav
+						li 
+							a(href="#") Trang chủ
+						li 
+							a(href="#") Giới thiệu 
+						li 
+							a(href="#") Quan hệ cổ đông
+						li 
+							a(href="#") Sản xuất 
+						li.parent-men
+							a(href="#") Hệ thống bán lẻ
+							ul.dropdown-menu.sub-menu
+								li 
+									a(href="#") Sub menu 1
+								li 
+									a(href="#") Sub menu 1
+						li 
+							a(href="#") Đại lý phân phối
+			nav.navbar-collapse.bs-navbar-collapse.collapse 
+				ul.nav.navbar-nav
+					li 
+						a(href="#") Trang chủ
+					li 
+						a(href="#") Giới thiệu 
+					li 
+						a(href="#") Quan hệ cổ đông
+					li 
+						a(href="#") Sản xuất 
+					li 
+						a(href="#") Hệ thống bán lẻ
+
+					li 
+						a(href="#") Đại lý phân phối
+					
+
+
+			h1.logo
+				a(href="#", title="Logo")
+					img(src="" alt="Hapro Logo" width="250" height="100")
