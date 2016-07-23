@@ -1,53 +1,33 @@
-header.header.navbar.navbar-inverse.navbar-fixed-top
-	.container-fluid
-		.navbar-header
-			button(data-target=".mobile-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed")
-				span.sr-only Toggle navigation
-				span.icon-bar
-				span.icon-bar
-				span.icon-bar
-			nav.mobile-navbar-collapse.collapse
-				span.icon-cross
-				.navbar-box
-					ul.nav.navbar-nav
-						li 
-							a(href="#") Trang chủ
-						li 
-							a(href="#") Giới thiệu 
-						li 
-							a(href="#") Quan hệ cổ đông
-						li 
-							a(href="#") Sản xuất 
-						li.parent-menu
-							a(href="#") Hệ thống bán lẻ
-							ul.dropdown-menu.sub-menu
+header.header
+	.container
+		.row
+			.col-xs-12
+				.top-links
+					ul.clearfix
+						li.language
+							span.lang-ico.vn-lang Tiếng Việt
+							ul
 								li 
-									a(href="#") Sub menu 1
-								li 
-									a(href="#") Sub menu 1
-						li 
-							a(href="#") Đại lý phân phối
-			h1.logo
-				a(href="#", title="Logo")
-					img(src="" alt="Hapro Logo" width="250" height="100")
-		nav.navbar-collapse.bs-navbar-collapse.collapse 
-			ul.nav.navbar-nav
-				li 
-					a(href="#") Trang chủ 
-				li 
-					a(href="#") Giới thiệu 
-				li 
-					a(href="#") Quan hệ cổ đông
-				li 
-					a(href="#") Sản xuất 
-				li.parent-menu
-					a.dropdown-toggle(href="javascript:void(0)",data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") Hệ thống bán lẻ
-					ul.dropdown-menu.sub-menu
-						li 
-							a(href="#") Sub menu 1
-						li 
-							a(href="#") Sub menu 1
-				li 
-					a(href="#") Đại lý phân phối
+									a.lang-ico.vn-lang(href="#") Tiếng Việt
+								li
+									a.lang-ico.en-lang(href="#") Englist
+						li
+							a(href="#") Tuyển dụng
+						li
+							a(href="#") Liên hệ
+			.header-bottom
+				.col-xs-12.col-sm-6
+					.logo
+						h1
+							a(href="#", title="Logo")
+								img.img-responsive(src="assets/images/logo.png" alt="Hapro Logo")
+				.col-xs-12.col-sm-6
+					.search-box
+						form(role="search" method="get" class="search-form" action="")
+							.form-group
+								input(type="search" class="form-control search-field" placeholder="Tìm kiếm" value="" name="s" title="Tìm kiếm" )
+								button(type="submit" class="search-submit" value="")
+									i(class="fa fa-search" aria-hidden="true")
+
 					
 			

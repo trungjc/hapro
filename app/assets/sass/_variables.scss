@@ -24,6 +24,18 @@ $screen-md: 1025px !default;
     font-style: normal;
 }
 
+@font-face{
+    font-family: 'VNF-Futura';
+    src: url('#{$fontsPath}VNF-FuturaRegular.eot?#iefix') format('embedded-opentype'),
+    url('#{$fontsPath}VNF-FuturaRegular.otf') format('opentype'),
+    url('#{$fontsPath}VNF-FuturaRegular.woff') format('woff'),
+     url('#{$fontsPath}VNF-FuturaRegular.woff2') format('woff2'),
+    url('#{$fontsPath}VNF-FuturaRegular.ttf') format('truetype'),
+    url('#{$fontsPath}VNF-FuturaRegular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 $font-awesome: 'FontAwesome';
 $font-sans-serif: Helvetica,
 Arial,
@@ -32,14 +44,34 @@ $helvetica-neue: 'HelveticaNeueLTStd-Th',
 $font-sans-serif;
 $helvetica-bold: 'HelveticaNeueBold',
 $font-sans-serif;
+
+$Noto-sans: 'Noto Sans', sans-serif;
+$VNF-Futura: "VNF-Futura";
+$Roboto: 'Roboto', sans-serif;
 // Color
 $white: #fff;
 $black: #000;
 $dark-grey: #414042;
-$light-grey: #e3e4e4;
+$medium-gray: #58595b;
+$light-grey: #e6e7e8;
+$thin-grey: #e9e9e9;
 $dark-blue: #001a34;
 $light-blue: #0079a0;
 $branch-color: #09183f;
+$light-green: #41ac48;
+$dark-green: #003c1e;
+
+/*Header Color: */
+$header-bg: #f8f7f6;
+/*Top links*/
+$toplink-color: #222222;
+
+/*Navigation*/
+$nav-default: #009344;
+$nav-hover :#7eb539;
+
+
+
 $vhFull: 100vh;
 $minVhFull: 900px;
 $minVhFullMobile: 540px;

@@ -3,6 +3,8 @@ html.no-js
 	include ../includes/head.jade
 	body(ontouchstart="")
 		include ../includes/header.jade
-		block content
+		include ../includes/navigation.jade
+		main
+			block content
 		include ../includes/footer.jade
 	include ../includes/bottom.jade
