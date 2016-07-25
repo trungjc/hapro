@@ -1,0 +1,158 @@
+/*
+Theme Name: whispli
+Theme URI: http://whispli.project-staging.com/
+Author: OffSpring
+Author URI: http://whispli.project-staging.com/
+Description: Description
+Version: 1.0.0
+Text Domain: whispli
+Tags:
+*/
+body {
+	font-size: 14px;
+}
+
+/* Contact */
+.contact-page .wpcf7-mail-sent-ok, .contact-page .screen-reader-response, .contact-page .wpcf7-validation-errors {
+	display: none !important;
+}
+
+.form-validate > .row .form-group {
+	margin-top: 0px !important;
+}
+
+.contact-page .wpcf7-not-valid-tip {
+	display: none !important;
+}
+
+/* Product */
+.pricing-column .description p {
+	margin: 0;
+}
+
+/* Partners */
+.resource-support h3 {
+	padding-top: 30px;
+}
+
+.resource-support ul {
+	margin-bottom: 30px;
+}
+
+.become-partner .text-box ul li:after {
+	height: 5px;
+	width: 5px;
+}
+
+.become-partner .text-box ul li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	line-height: 18px;
+}
+
+@media (max-width: 979px) and (min-width: 768px){
+	.become-partner {
+		margin-bottom: 64px;
+	}
+}
+
+p, .description {
+	letter-spacing: 0.01em;
+}
+
+/* Home page */
+#product-panel .more-item p {
+	line-height:18px;
+}
+
+.bellow-hero .pull-left {
+	padding-right: 30px;
+	padding-top: 5px;
+	position: relative;
+	width: 85px;
+	padding-left: 20px;
+}
+.bellow-hero .pull-left span {
+	margin: 0;
+	display: block;
+	position: absolute;
+	top: 50%;
+	margin-top: -21px;
+}
+.bellow-hero .media {
+	margin-bottom: 25px;
+}
+.bellow-hero .media p {
+	margin-bottom: 0;
+}
+
+/* Menu */
+.navbar-nav a {
+	font-size: 12px;
+}
+
+/* Ipad */
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+	.bellow-hero .media:first-child .pull-left span {
+
+	}
+}
+
+@media (max-width: 979px) and (min-width: 768px){
+	.bs-navbar-collapse .nav > li > a, .navbar-fixed-top.smaller .bs-navbar-collapse .nav > li > a {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.bs-navbar-collapse .nav > li, .navbar-fixed-top.smaller .bs-navbar-collapse .nav > li {
+		width: 33.33%;
+		text-align: center;
+	}
+	.navbar-fixed-top .bs-navbar-collapse .navbar-nav{
+		width: 40%;
+	}
+	.navbar-fixed-top.smaller .bs-navbar-collapse .navbar-nav {
+		width: 42%;
+	}
+	.navbar-right{
+		width: 30%;
+	}
+	.navbar-fixed-top.smaller .navbar-right {
+		width: 36%;
+	}
+	.navbar-right > li, .navbar-fixed-top.smaller .navbar-right > li {
+		width:33.33%;
+		text-align: center;
+	}
+	.navbar-right > li.switch-language, .navbar-fixed-top.smaller .navbar-right > li.switch-language {
+		text-align: right;
+		float: right;
+	}
+}
+
+@media only screen and (min-width : 320px) and (max-width : 667px) {
+	.bellow-hero .pull-left {
+		margin: 0 auto;
+	}
+	.bellow-hero .pull-left span {
+		left: 0;
+		right: 0;
+	}
+	.bellow-hero .media {
+		margin-bottom: 0;
+	}
+}
+
+@media only screen and (max-width : 479px) {
+	.bellow-hero .pull-left {
+		width: 100% !important;
+		margin-bottom: 18px;
+	}
+	.bellow-hero .pull-left span {
+		 position: inherit ! important;
+		 margin-top: 0 ! important;
+		 display: inline ! important;
+	}
+	.bellow-hero .media {
+		margin-bottom: 15px;
+	}
+}

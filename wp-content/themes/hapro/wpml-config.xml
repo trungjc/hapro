@@ -1,0 +1,10 @@
+<wpml-config>
+	<admin-texts>
+		<key name="facebook_link"/>
+		<key name="twitter_link"/>
+		<key name="linkedin_link"/>
+		<key name="footer_quote"/>
+		<key name="blogdescription"/>
+		<key name="google_analytic"/>
+	</admin-texts>
+</wpml-config>
