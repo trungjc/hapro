@@ -9,6 +9,8 @@ header{
 		float: right;
 		@include xs{
 			float: none;
+			text-align: center;
+			margin-bottom: 20px;
 		}
 		ul{
 			list-style: none;

@@ -1,0 +1,5 @@
+img {
+	@include xs {
+    	max-width: 100%;
+	}
+}

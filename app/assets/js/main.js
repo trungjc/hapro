@@ -13,7 +13,16 @@ Hapro = {
 				slidesToScroll: 1,
 				asNavFor: "#home-slider-nav",
 				prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-				nextArrow: '<button type="button" class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></button>'
+				nextArrow: '<button type="button" class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+				responsive: [					
+					{
+						breakpoint: 767,						
+						settings:{
+							arrows: false,
+							slidesToShow: 1
+						}
+					}
+				]
 				
 			});
 			$("#home-slider-nav").slick({
