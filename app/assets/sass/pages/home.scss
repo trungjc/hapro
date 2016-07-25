@@ -103,14 +103,22 @@
 .home-news-block{
 	padding-top: 20px;
 	color: $medium-gray;
-	h4{
-		text-transform: uppercase;
-		padding-bottom: 15px;
-		border-bottom: 1px solid $thin-grey;
-	}
 	.news{
-
 		margin-top: 10px;  
+		.title{
+			padding-bottom: 5px;
+			border-bottom: 1px solid $thin-grey;
+		}
+	}
+	.title{
+		h4{
+			text-transform: uppercase;
+			float:left;
+		}
+		.paging-news{
+			margin-top: 5px; 
+			float: right;
+		}
 	}
 	.news-list{ 
 		padding-top: 10px;
@@ -136,6 +144,29 @@
 			font-weight: 400;
 		}
 	}
+	.slick-dots{
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+		li{
+
+			display: inline-block;
+			padding: 0 2px;
+			button{
+				border-radius: 50%;
+				border: 0px;
+				background-color: $slick-dots;
+				font-size: 0px;
+				padding: 5px;
+			}
+			&.slick-active{
+				button{
+					background-color: $slick-dots-active;
+				}
+			}
+		}
+	}
+
 }
 .brands{
 	margin-top: 90px;

@@ -3,7 +3,6 @@ extends layouts/default
 block content
 		section.home-slider
 			.container
-				.row
 					.slider-wrapper
 						.slider-main#home-slider
 							.slider-item(style="background-image:url('assets/images/home-slider.jpg')")
@@ -91,16 +90,18 @@ block content
 				.row
 					.col-xs-12.col-sm-6
 						.news
-							.title
+							.title.clearfix
 								h4 Tin thị trường
+								#business-news-paging.paging-news
 							#business-news.news-list
 								+newsList
 								
 								
 					.col-xs-12.col-sm-6
 						.news
-							.title
+							.title.clearfix
 								h4 Tin doanh nghiệp
+								#market-news-paging.paging-news
 							#market-news.news-list
 								+newsList
 		section.brands

@@ -50,6 +50,8 @@ Hapro = {
 				slidesToScroll: 1,
 				slidesToShow: 2,
 				arrows: false,
+				dots: true,
+				appendDots: $(element+"-paging"),
 				responsive: [
 					{
 						breakpoint: 480,
