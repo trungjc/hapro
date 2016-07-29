@@ -62,12 +62,7 @@ if ( isset( $locations['footer_primary_menu'] ) ) {
           <div class="col-xs-12">
             <div class="top-links">
               <ul class="clearfix">
-                <li class="language"><span class="lang-ico vn-lang">Tiếng Việt</span>
-                  <ul>
-                    <li> <a href="#" class="lang-ico vn-lang">Tiếng Việt</a></li>
-                    <li><a href="#" class="lang-ico en-lang">Englist</a></li>
-                  </ul>
-                </li>
+                <?php pll_the_languages(array('show_flags'=>1, 'show_names'=>1)); ?>
                 <li><a href="#">Tuyển dụng</a></li>
                 <li><a href="#">Liên hệ</a></li>
               </ul>

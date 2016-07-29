@@ -8,11 +8,16 @@
  */
 ?>
 <?php get_header(); ?>
-<?php 
-$other_page = 91; 
 
+<?php
+ $currentlang = get_bloginfo('language');
+ if($currentlang=="en-US"):
+   $other_page = 215;
 ?>
+<?php else: 
+  $other_page =91 ; 
 
+  endif; ?>
   <?php if( have_rows('slider', $other_page) ): ?> 
        <section class="home-slider">
        <style>
