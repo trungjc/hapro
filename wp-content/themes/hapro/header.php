@@ -53,7 +53,7 @@ if ( isset( $locations['footer_primary_menu'] ) ) {
 	$footer_primary_menu = whispli_custom_nav_menu( 'footer_primary_menu' );
 }
 
-
+ $currentlang = get_bloginfo('language');
 ?>
 <body <?php body_class(); ?>>
 	<header class="header">
@@ -63,8 +63,21 @@ if ( isset( $locations['footer_primary_menu'] ) ) {
             <div class="top-links">
               <ul class="clearfix">
                 <?php pll_the_languages(array('show_flags'=>1, 'show_names'=>1)); ?>
-                <li><a href="#">Tuyển dụng</a></li>
-                <li><a href="#">Liên hệ</a></li>
+                 <?php if($currentlang=="en-US"):
+					   $tuyendung = 139;
+					   $contact = 137;
+					    $name1= 'Recruitment';
+					   $name2= 'Contact';
+					?>
+					<?php else: 
+					  $tuyendung = 2;
+					   $contact = 37; 
+					   $name1= 'Tuyển dụng';
+					   $name2= 'Liên hệ';
+
+					  endif; ?>
+                <li><a href="<?php echo get_page_link($tuyendung); ?>"><?php echo $name1 ?></a></li>
+                <li><a href="<?php echo get_page_link($contact); ?>"><?php echo $name2 ?></a></li>
               </ul>
             </div>
           </div>
@@ -89,30 +102,11 @@ if ( isset( $locations['footer_primary_menu'] ) ) {
 	<!-- END - Header =================================================================================== -->
 	<nav class="navbar">
       <div class="container">
-        <div class="navbar-header">
-          <button data-target=".mobile-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-          <nav class="mobile-navbar-collapse collapse"><span class="icon-cross"></span>
-            <div class="navbar-box">
-              <ul class="nav navbar-nav">
-                <li class="current-menu-item"> <a href="#">Trang chủ</a></li>
-                <li> <a href="#">Giới thiệu </a></li>
-                <li> <a href="#">Quan hệ cổ đông</a></li>
-                <li> <a href="#">Sản xuất </a></li>
-                <li class="parent-menu"><a href="#">Hệ thống bán lẻ</a>
-                  <ul class="dropdown-menu sub-menu">
-                    <li> <a href="#">Sub menu 1</a></li>
-                    <li> <a href="#">Sub menu 1</a></li>
-                  </ul>
-                </li>
-                <li> <a href="#">Đại lý phân phối</a></li>
-              </ul>
-            </div>
-          </nav>
-        </div>
         <?php
 			if ( count( $main_menu[0] ) > 0 ) {
 				?>
-				<nav class="navbar-collapse bs-navbar-collapse collapse ">
+				<button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+				<nav class="navbar-collapse bs-navbar-collapse collapse "><span class="icon-cross"></span>
 					<ul class="nav navbar-nav">
 						<?php foreach ( $main_menu[0] as $index => $parent_item ) { ?>
 							<?php $has_sub = in_array( $parent_item->ID, array_keys( $main_menu[2] ) ); ?>

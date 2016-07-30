@@ -1,99 +1,149 @@
-footer{
-	background-color: $dark-green;
-	padding: 50px 0px;
-	.footer-block{
-		margin: 20px 0px;
-	}
-	.footer-logo{
-		padding-bottom: 60px;
-	}
-	.footer-links{
-		padding-right: 50px;
-	}
-	.contact-address{
-		padding-right: 70px;
-	}
-	.block-list{
-		ul{
-			list-style: none;
-			padding: 0px;
-			li{
-				border-bottom: 1px solid #33634b;  
-				padding: 8px 0px;
-				&:last-child{
-					border-bottom: 0px;
-				}
-				%text-style{
-					font-weight: 400;
-					font-family:  $Roboto;
-					font-size: 14px; 
-					color: $white;
-
-				}
-				a{
-					@extend %text-style;
-					text-decoration: none;
-				}
-				span{
-					@extend %text-style;
-				}
-			}
-		}
-	}
-	.contact-address{
-		li{
-			@include clearfix();
-		} 
-		.custom-col{
-			float: left;
-			position:relative
-		}  
-		.icon{
-			width: 10%;
-		}
-		.info{
-			width: 90%;
-		}
-	}
-
-	.follow-us-contact{  
-		label{
-			font-weight: 400;
-			font-family:  $Roboto;
-			color: $white;
-			text-transform: uppercase;
-			display: block;
-			padding-bottom: 5px;
-			margin-bottom: 10px;
-		}
-	} 
-	.follow-us{
-		ul{
-			list-style: none;
-			padding: 0px;
-			li{
-				display: inline-block;
-				margin: 5px 0px;
-				a{
-					display: block;
-				}
-				img{
-					max-width: 100%;
-				}
-			}
-		}
-	}
-	.contact{
-		margin-top: 32px;
-		label{
-			border-bottom: 1px solid $white;
-		}
-		input{
-			border-radius: 0px;
-		}
-	}
+#footer .container-inner {
+    background-color: $dark-green;
 }
 
+@include desktop {
+    .footer-wrapper {
+        padding: 0 20px;
+    }
+}
 
+.footer {
+    padding: 40px 0px 0px;
+    .footer-block {
+        margin: 20px 0px;
+    }
+    .footer-logo {
+        padding-bottom: 20px;
+    }
+    .footer-links {
+        padding-right: 50px;
+    }
+    .contact-address {
+        padding-right: 70px;
+    }
+    .block-list {
+        ul {
+            list-style: none;
+            padding: 0px;
+            li {
+                border-bottom: 1px solid #33634b;
+                padding: 8px 0px;
+                &:last-child {
+                    border-bottom: 0px;
+                }
+                %text-style {
+                    font-weight: 400;
+                    font-family: $Roboto;
+                    font-size: 14px;
+                    color: $white;
+                }
+                a {
+                    @extend %text-style;
+                    text-decoration: none;
+                    text-transform: capitalize;
+                }
+                span {
+                    @extend %text-style;
+                }
+            }
+        }
+    }
+    .contact-address {
+        li {
+            @include clearfix();
+        }
+        .custom-col {
+            float: left;
+            position: relative
+        }
+        .icon {
+            width: 10%;
+        }
+        .info {
+            width: 90%;
+        }
+    }
+    .follow-us-contact {
+        label {
+            font-weight: 400;
+            font-family: $Roboto;
+            color: $white;
+            text-transform: uppercase;
+            display: block;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+    }
+    .follow-us {
+        ul {
+            list-style: none;
+            padding: 0px;
+            li {
+                display: inline-block;
+                margin: 5px 0px;
+                a {
+                    display: block;
+                    &:hover img {
+                        opacity: 0.8;
+                    }
+                }
+                img {
+                    transition: all 0.3s linear 0s;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .contact {
+        margin-top: 32px;
+        label {
+            border-bottom: 1px solid #33634b;
+        }
+        input {
+            border-radius: 0px;
+        }
+    }
+}
 
+#footer .widget-title {
+    display: none;
+}
 
+.footer-bottom {
+    font-size: 12px;
+    background-color: white;
+    padding: 20px 0;
+    .widget_wpstatistics_widget {
+        ul {
+            padding: 0;
+            @include desktop {
+                padding-left: 20px;
+            }
+        }
+    }
+    .textwidget {
+        ul {
+            margin: 0;
+            padding: 0;
+            li {
+                display: inline-block;
+                margin-right: 10px;
+                text-transform: capitalize;
+                & + li {
+                    line-height: 10px;
+                    padding-left: 10px;
+                    border-left: 1px solid #333;
+                }
+            }
+        }
+    }
+    ul li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        a {
+            color: #333;
+        }
+    }
+}

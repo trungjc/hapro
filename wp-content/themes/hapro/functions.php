@@ -9,74 +9,8 @@
 define('COOKIE_DOMAIN',site_url());
 define('COOKIEPATH','/');
 
-// Check geoip
-function whispli_get_new_root_relative_current( $language_code ) {
-	global $wp_rewrite;
-	$_root_relative_current = untrailingslashit( $_SERVER['REQUEST_URI'] );
-	if ( '/' . $language_code == $_root_relative_current || '/' . $language_code . '/' == $_root_relative_current ) {
-		$new_root_relative_current = '';
-	} else {
-		$new_root_relative_current = str_replace( '/' . $language_code . '/', '', $_root_relative_current );
-	}
 
-	return $new_root_relative_current;
-}
 
-if (!function_exists('whispli_check_geoip')) {
-	function whispli_check_geoip() {
-		if (function_exists('geoip_record_by_name')) {
-
-            if (isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT'])) {
-            }else{
-
-                $_root_relative_current = untrailingslashit( $_SERVER['REQUEST_URI'] );
-                if ( ! isset( $_COOKIE['whispli_check_geoip'] ) && $_SERVER["REMOTE_ADDR"] != '127.0.0.1' && false === strpos($_root_relative_current,'wp-admin') && false === strpos($_root_relative_current,'wp-login.php')) {
-                    setcookie( "whispli_check_geoip", true, time() + 86400 );
-                    global $sitepress;
-                    $main_language = array(
-                        'native_name'      => __( 'All languages', 'sitepress' ),
-                        'translated_name'  => __( 'All languages', 'sitepress' ),
-                        'language_code'    => 'all',
-                        'country_flag_url' => ICL_PLUGIN_URL . '/res/img/icon16.png',
-                    );
-                    if ( 'all' !== $sitepress->get_current_language() ) {
-                        $language_details                 = $sitepress->get_language_details( $sitepress->get_current_language() );
-                        $main_language['native_name']     = $language_details['display_name'];
-                        $main_language['translated_name'] = $language_details['display_name'];
-                        $main_language['language_code']   = $language_details['code'];
-                    }
-                    $language_code = $main_language['language_code'];
-
-                    $record = geoip_record_by_name( $_SERVER["REMOTE_ADDR"] );
-                    if ( ! empty( $record ) ) {
-                        if ( $record['country_code3'] == 'CHE' && $language_code != 'sz' ) {
-                            wp_redirect( site_url( '/sz/' . whispli_get_new_root_relative_current( $language_code ) ) );
-                            exit();
-                        } elseif ( $record['country_code3'] == 'NZL' && $language_code != 'nz' ) {
-                            wp_redirect( site_url( '/nz/' . whispli_get_new_root_relative_current( $language_code ) ) );
-                            exit();
-                        } elseif ( $record['country_code3'] == 'GBR' && $language_code != 'gb' ) {
-                            wp_redirect( site_url( '/gb/' . whispli_get_new_root_relative_current( $language_code ) ) );
-                            exit();
-                        } elseif ( $record['country_code3'] == 'AUS' ) {
-                            wp_redirect( site_url( whispli_get_new_root_relative_current( $language_code ) ) );
-                            exit();
-                        } elseif ( $record['continent_code'] == 'EU' && $language_code != 'er' ) {
-                            wp_redirect( site_url( '/er/' . whispli_get_new_root_relative_current( $language_code ) ) );
-                            exit();
-                        } elseif ( $language_code != 'us' ) {
-                            wp_redirect( site_url( '/us/' . whispli_get_new_root_relative_current( $language_code ) ) );
-                            exit();
-                        }
-                    }
-                }
-
-            }
-		}
-	}
-}
-
-add_action( 'init', 'whispli_check_geoip' );
 
 if ( ! function_exists( 'whispli_setup' ) ) :
 	/**
@@ -176,7 +110,7 @@ function twentyfourteen_widgets_init() {
 	register_widget( 'Twenty_Fourteen_Ephemera_Widget' );
 
 	register_sidebar( array(
-		'name'          => __( 'Primary Sidebar', 'twentyfourteen' ),
+		'name'          => __( 'Left Sidebar', 'twentyfourteen' ),
 		'id'            => 'sidebar-1',
 		'description'   => __( 'Main sidebar that appears on the left.', 'twentyfourteen' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -185,18 +119,9 @@ function twentyfourteen_widgets_init() {
 		'after_title'   => '</h1>',
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Content Sidebar', 'twentyfourteen' ),
-		'id'            => 'sidebar-2',
-		'description'   => __( 'Additional sidebar that appears on the right.', 'twentyfourteen' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
-	register_sidebar( array(
 		'name'          => __( 'Footer Middle', 'twentyfourteen' ),
 		'id'            => 'sidebar-3',
-		'description'   => __( 'Appears in the footer section of the site.', 'twentyfourteen' ),
+		'description'   => __( 'Appears in the footer middle section of the site.', 'twentyfourteen' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',
@@ -205,7 +130,26 @@ function twentyfourteen_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Footer right', 'twentyfourteen' ),
 		'id'            => 'sidebar-4',
-		'description'   => __( 'Appears in the footer section of the site.', 'twentyfourteen' ),
+		'description'   => __( 'Appears in the footer right section of the site.', 'twentyfourteen' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Footer Left bottom', 'twentyfourteen' ),
+		'id'            => 'sidebar-2',
+		'description'   => __( 'Appears in the footer left section of the site.', 'twentyfourteen' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer right bottom', 'twentyfourteen' ),
+		'id'            => 'sidebar-5',
+		'description'   => __( 'Appears in the footer right section of the site.', 'twentyfourteen' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',
@@ -246,7 +190,7 @@ wp_enqueue_script( 'whispli-plugin', get_template_directory_uri() . '/assets/js/
 
 	wp_enqueue_script( 'whispli-main' );
 }
-
+add_filter('show_admin_bar', '__return_false');
 add_action( 'wp_enqueue_scripts', 'whispli_scripts' );
 
 /**
@@ -307,7 +251,6 @@ require get_template_directory() . '/inc/template-tags.php';
  */
 require get_template_directory() . '/inc/product-functions.php';
 
-
 /**
  * Include Aqua resizer
  */
@@ -323,289 +266,450 @@ if ( ! function_exists( 'whispli_resize_image' ) ) {
 	}
 }
 
-if ( ! function_exists( 'whispli_language_selector' ) ) {
-	function whispli_language_selector() {
-		global $sitepress;
-		$active_languages = $sitepress->get_ls_languages();
-		$active_languages = apply_filters( 'wpml_active_languages_access', $active_languages, array( 'action' => 'read' ) );
-
-		if ( $active_languages ) {
-			/**
-			 * @var $main_language bool|string
-			 * @used_by menu/language-selector.php
-			 */
-			foreach ( $active_languages as $k => $al ) {
-				if ( $al['active'] == 1 ) {
-					unset( $active_languages[$k] );
-					break;
-				}
-			}
-		} else {
-			return '';
-		}
-
-
-		$main_language = array(
-			'native_name'      => __( 'All languages', 'sitepress' ),
-			'translated_name'  => __( 'All languages', 'sitepress' ),
-			'language_code'    => 'all',
-			'country_flag_url' => ICL_PLUGIN_URL . '/res/img/icon16.png',
-		);
-		if ( 'all' !== $sitepress->get_current_language() ) {
-			$language_details                 = $sitepress->get_language_details( $sitepress->get_current_language() );
-			$main_language['native_name']     = $language_details['display_name'];
-			$main_language['translated_name'] = $language_details['display_name'];
-			$main_language['language_code']   = $language_details['code'];
-
-			$flag = $sitepress->get_flag( $main_language['language_code'] );
-			if ( isset( $flag->from_template ) && $flag->from_template && isset( $flag->flag ) ) {
-				$wp_upload_dir                     = wp_upload_dir();
-				$main_language['country_flag_url'] = $wp_upload_dir['baseurl'] . '/flags/' . $flag->flag;
-			} else {
-				if ( isset( $flag->flag ) ) {
-					$main_language['country_flag_url'] = ICL_PLUGIN_URL . '/res/flags/' . $flag->flag;
-				} else {
-					$main_language['country_flag_url'] = ICL_PLUGIN_URL . '/res/img/icon16.png';
-				}
-			}
-		}
-
-		$language_selector = '<li class="switch-language parent-menu">';
-
-		$settings = get_option( 'icl_sitepress_settings' );
-		if ( $main_language ) {
-			$language_selector .= '<a class="dropdown-toggle" href="#" data-toggle="dropdown"> <img width="19" style="top:5px;" src="' . $main_language['country_flag_url'] . '" alt="' . $main_language['language_code'] . '"></a>';
-		}
-
-		if ( ! empty( $active_languages ) ) {
-
-			$language_selector .= '<ul class="dropdown-menu">';
-			$active_languages_ordered = $sitepress->order_languages( $active_languages );
-			foreach ( $active_languages_ordered as $lang ) {
-				$language_selector .= '<li><a href="' . $lang['url'] . '" title="' . ( $settings['icl_lso_display_lang'] ? esc_attr( $lang['translated_name'] ) : esc_attr( $lang['native_name'] ) ) . '">' . ( $settings['icl_lso_display_lang'] ? esc_attr( $lang['translated_name'] ) : esc_attr( $lang['native_name'] ) ) . '<img style="top:5px;" src="' . $lang['country_flag_url'] . '" alt="' . $lang['language_code'] . '"></a></li>';
-			}
-			$language_selector .= '</ul>';
-		}
-
-		$language_selector .= '</li>';
-		echo $language_selector;
-	}
-}
-
 if ( ! function_exists( 'whispli_remove_p_wrapper' ) ) {
 	function whispli_remove_p_wrapper( $str ) {
 		return preg_replace( '!^<p>(.*?)</p>$!i', '$1', $str );
 	}
 }
 
-if(!function_exists('whispli_load_product_blogs')) {
-	function whispli_load_product_blogs($cate_id) {
-		if ($cate_id == 'all' || intval($cate_id) == 1) {
-			$posts = get_posts( array( 'posts_per_page' => -1 ) );
-		} else {
-			$posts = get_posts(array('posts_per_page' => -1, 'category' => $cate_id));
-		}
-		global $post;
-		ob_start();
-		if(!empty($posts)) {
-			?>
-			<div id="posts-area">
-				<?php foreach($posts as $i=>$post) { ?>
-					<?php setup_postdata( $post );?>
-						<article class="post type-post fraudsec-category post-item-feature <?php if($i%2==0) {echo 'even';} else{echo 'odd';}?>" data-myorder="<?php echo $i+1?>">
-							<?php if ( has_post_thumbnail() ) { ?>
-								<div class="feature-image">
-									<?php $product_thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' ) ?>
-									<img src="<?php echo whispli_resize_image($product_thumbnail_src[0], 470, 336); ?>" alt="">
-									<div class="visible-sm-block" style="background-image: url('<?php echo $product_thumbnail_src[0]; ?>')"></div>
-								</div>
-							<?php } else {?>
-								<div class="feature-image">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/img/blog_placeholder.png" alt="">
-									<div class="visible-sm-block" style="background-image: url('<?php echo get_template_directory_uri()?>/assets/img/blog_placeholder.png')"></div>
-								</div>
-							<?php } ?>
-							<?php
-							if($cate_id != 'all') {
-								$cate = get_category( $cate_id );
-							} else {
-								$cates = get_the_category();
-								if (!empty($cates)) {
-									$cate = $cates[0];
-								} else {
-									$cate = false;
-								}
-							}
-							?>
-							<div class="post-content">
-								<header class="entry-header">
-									<?php if(!empty($cate)) {?>
-										<div class="cat-links"><span><?php echo $cate->name?></span></div>
-									<?php }?>
-									<h2 class="entry-title"><a rel="bookmark" href="<?php the_permalink()?>"><?php the_title(); ?></a></h2>
-									<div class="posted-on"><?php the_date('j M Y')?></div>
-								</header>
-								<div class="entry-content">
-									<?php the_excerpt();?>
-								</div>
-								<a class="btn btn-default btn-border-dark read-more" href="<?php the_permalink()?>"><?php echo _e('Read more','whispli');?>
-									<span class="icon-arrow"></span></a>
-							</div>
-						</article>
-				<?php }
-				wp_reset_postdata();?>
-			</div>
-			<?php
-		}
-		$html = ob_get_contents();
-		ob_end_clean();
-		return $html;
-	}
-}
-
-add_action( 'wp_ajax_nopriv_load_blog_content', 'whispli_load_blog_content' );
 
 
-if (!function_exists('whispli_load_blog_content')) {
-	function whispli_load_blog_content() {
-		check_ajax_referer('whispli_ajax_nonce','security');
-		if (isset($_POST['bloghash']) && !empty($_POST['bloghash'])) {
-			echo whispli_load_product_blogs($_POST['bloghash']);
-		}
-		exit();
-	}
-}
-
-add_filter( 'admin_init', 'whispli_general_settings_register_fields' );
-if (!function_exists('whispli_general_settings_register_fields')) {
-	function whispli_general_settings_register_fields() {
-		register_setting( 'general', 'facebook_link', 'esc_attr' );
-		add_settings_field( 'facebook_link', '<label for="facebook_link">' . __( 'Facebook', 'whispli' ) . '</label>', 'whispli_general_settings_facebook_link', 'general' );
-
-		register_setting( 'general', 'twitter_link', 'esc_attr' );
-		add_settings_field( 'twitter_link', '<label for="twitter_link">' . __( 'Twitter', 'whispli' ) . '</label>', 'whispli_general_settings_twitter_link', 'general' );
-
-		register_setting( 'general', 'linkedin_link', 'esc_attr' );
-		add_settings_field( 'linkedin_link', '<label for="linkedin_link">' . __( 'Linkedin', 'whispli' ) . '</label>', 'whispli_general_settings_linkedin_link', 'general' );
-
-		register_setting( 'general', 'footer_quote', 'esc_attr' );
-		add_settings_field( 'footer_quote', '<label for="footer_quote">' . __( 'Footer Quote', 'whispli' ) . '</label>', 'whispli_general_settings_footer_quote', 'general' );
-
-		register_setting( 'general', 'google_analytic', 'esc_attr' );
-		add_settings_field( 'google_analytic', '<label for="google_analytic">' . __( 'Google Analytics', 'whispli' ) . '</label>', 'whispli_general_settings_google_analytic', 'general' );
-	}
-}
-if (!function_exists('whispli_general_settings_facebook_link')) {
-	function whispli_general_settings_facebook_link() {
-		$value = esc_attr( get_option( 'facebook_link' ) );
-		echo '<input type="text" style="width: 80%;" id="facebook_link" class="regular-text" name="facebook_link" value="' . $value . '" />';
-
-	}
-}
-
-if (!function_exists('whispli_general_settings_twitter_link')) {
-	function whispli_general_settings_twitter_link() {
-		$value = esc_attr( get_option( 'twitter_link' ) );
-		echo '<input type="text" style="width: 80%;" id="twitter_link" class="regular-text" name="twitter_link" value="' . $value . '" />';
-
-	}
-}
-
-if (!function_exists('whispli_general_settings_linkedin_link')) {
-	function whispli_general_settings_linkedin_link() {
-		$value = esc_attr( get_option( 'linkedin_link' ) );
-		echo '<input type="text" style="width: 80%;" id="linkedin_link" class="regular-text" name="linkedin_link" value="' . $value . '" />';
-	}
-}
-
-if (!function_exists('whispli_general_settings_footer_quote')) {
-	function whispli_general_settings_footer_quote() {
-		$value = esc_attr( get_option( 'footer_quote' ) );
-		echo '<textarea type="text" style="width: 80%;" rows="5" id="footer_quote" name="footer_quote" value="">' . $value . '</textarea>';
-	}
-}
-
-if (!function_exists('whispli_general_settings_google_analytic')) {
-	function whispli_general_settings_google_analytic() {
-		$value = esc_attr( get_option( 'google_analytic' ) );
-		echo '<input type="text" style="width: 80%;" id="google_analytic" class="regular-text" name="google_analytic" value="' . $value . '" />';
-	}
-}
-
-add_filter( 'whitelist_options', 'whispli_whitelist_options' );
-function whispli_whitelist_options( $whitelist_options ) {
-	$whitelist_options['general'][] = 'facebook_link';
-	$whitelist_options['general'][] = 'twitter_link';
-	$whitelist_options['general'][] = 'linkedin_link';
-	$whitelist_options['general'][] = 'footer_quote';
-	$whitelist_options['general'][] = 'google_analytic';
-
-	return $whitelist_options;
-}
-
-if (!function_exists('whispli_footer_featured_post')) {
-	function whispli_footer_featured_post() {
-		$posts = wp_get_recent_posts( array( 'post_status' => 'publish', 'suppress_filters' => false, 'numberposts' => 3 ) );
-		$post_item_class = array('light-blue','','dark-blue');
-		if ( count( $posts ) > 0 ) {
-			?>
-			<div class="feature-post">
-				<?php foreach ( $posts as $i => $post ) { ?>
-					<div class="col-3 <?php if ( $i == 0 ) {echo 'first-column';} ?> <?php echo $post_item_class[$i]?>" <?php if ($i== 1) {echo 'style="background-color:#441e74"';}?>>
-						<div class="post-item ">
-							<?php if ( has_post_thumbnail( $post['ID'] ) ) { ?>
-								<?php $product_thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post['ID'] ), 'full' ) ?>
-								<div class="img-feature" style="background-image:url(<?php echo whispli_resize_image( $product_thumbnail_src[0], 475, 406 ) ?>)"></div>
-							<?php } else {?>
-								<div class="img-feature" style="background-image:url('<?php echo get_fields()?>/assets/img/blog_footer_widget_placeholder.png')"></div>
-							<?php } ?>
-							<?php $cates = get_the_category( $post['ID'] ); ?>
-							<div class="content-item">
-								<h3 class="heading">
-									<?php if ( ! empty( $cates ) ) { ?>
-										<span><?php echo $cates[0]->name ?></span>
-									<?php } ?>
-									<?php echo get_the_title( $post['ID'] ); ?>
-								</h3>
-								<div class="date"><?php echo get_the_date( 'j M Y', $post['ID'] ) ?></div>
-								<p class="excerpt"><?php echo truncateExtract($post['post_excerpt']); ?></p>
-							</div>
-							<a href="<?php echo get_the_permalink( $post['ID'] ) ?>" class="btn btn-default"><?php echo __( 'read more', 'whispli' ) ?>
-								<span class="icon-arrow"></span></a>
-						</div>
-					</div>
-				<?php }?>
-			</div>
-			<?php
-		}
-	}
-}
-
-add_filter('wp_nav_menu_footer-secondary-menu_items','add_item_to_footer_secondary_menu');
-
-if (!function_exists('add_item_to_footer_secondary_menu')) {
-	function add_item_to_footer_secondary_menu($items) {
-		return $items .= '<li>'.__('ABN 25 605 003 825', 'whispli').'</li>';
-	}
-}
-
-function whispli_wpcf7_form_elements($html) {
-	function overfly_replace_include_blank($name, $text, &$html) {
-		$matches = false;
-		preg_match('/<select name="' . $name . '"[^>]*>(.*)<\/select>/iU', $html, $matches);
-		if ($matches) {
-			$select = str_replace('<option value="">---</option>', '<option value="">' . $text . '</option>', $matches[0]);
-			$html = preg_replace('/<select name="' . $name . '"[^>]*>(.*)<\/select>/iU', $select, $html);
-		}
-	}
-	overfly_replace_include_blank('countrylist', 'Country*', $html);
-	overfly_replace_include_blank('inquiry_type', 'Inquiry Type*', $html);
-	overfly_replace_include_blank('products', 'Products*', $html);
-	return $html;
-}
-add_filter('wpcf7_form_elements', 'whispli_wpcf7_form_elements');
 
 function truncateExtract($text){
     $text = (strlen($text) > 140) ? substr($text,0,strrpos( substr( $text, 0, 120), ' ' )).'[...]' : $text;
     return $text;
+}
+
+
+if ( ! function_exists( 'twentyfifteen_entry_meta' ) ) :
+/**
+ * Prints HTML with meta information for the categories, tags.
+ *
+ * @since Twenty Fifteen 1.0
+ */
+function twentyfifteen_entry_meta() {
+	if ( is_sticky() && is_home() && ! is_paged() ) {
+		printf( '<span class="sticky-post">%s</span>', __( 'Featured', 'twentyfifteen' ) );
+	}
+
+	$format = get_post_format();
+	if ( current_theme_supports( 'post-formats', $format ) ) {
+		printf( '<span class="entry-format">%1$s<a href="%2$s">%3$s</a></span>',
+			sprintf( '<span class="screen-reader-text">%s </span>', _x( 'Format', 'Used before post format.', 'twentyfifteen' ) ),
+			esc_url( get_post_format_link( $format ) ),
+			get_post_format_string( $format )
+		);
+	}
+
+	if ( in_array( get_post_type(), array( 'post', 'attachment' ) ) ) {
+		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+
+		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		}
+
+		$time_string = sprintf( $time_string,
+			esc_attr( get_the_date( 'c' ) ),
+			get_the_date(),
+			esc_attr( get_the_modified_date( 'c' ) ),
+			get_the_modified_date()
+		);
+
+		printf( '<span class="posted-on"><span class="screen-reader-text">%1$s </span><a href="%2$s" rel="bookmark">%3$s</a></span>',
+			_x( 'Posted on', 'Used before publish date.', 'twentyfifteen' ),
+			esc_url( get_permalink() ),
+			$time_string
+		);
+	}
+
+	if ( 'post' == get_post_type() ) {
+		if ( is_singular() || is_multi_author() ) {
+			printf( '<span class="byline"><span class="author vcard"><span class="screen-reader-text">%1$s </span><a class="url fn n" href="%2$s">%3$s</a></span></span>',
+				_x( 'Author', 'Used before post author name.', 'twentyfifteen' ),
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+				get_the_author()
+			);
+		}
+
+		$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'twentyfifteen' ) );
+		if ( $categories_list && twentyfifteen_categorized_blog() ) {
+			printf( '<span class="cat-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
+				_x( 'Categories', 'Used before category names.', 'twentyfifteen' ),
+				$categories_list
+			);
+		}
+
+		$tags_list = get_the_tag_list( '', _x( ', ', 'Used between list items, there is a space after the comma.', 'twentyfifteen' ) );
+		if ( $tags_list ) {
+			printf( '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
+				_x( 'Tags', 'Used before tag names.', 'twentyfifteen' ),
+				$tags_list
+			);
+		}
+	}
+
+	if ( is_attachment() && wp_attachment_is_image() ) {
+		// Retrieve attachment metadata.
+		$metadata = wp_get_attachment_metadata();
+
+		printf( '<span class="full-size-link"><span class="screen-reader-text">%1$s </span><a href="%2$s">%3$s &times; %4$s</a></span>',
+			_x( 'Full size', 'Used before full size attachment link.', 'twentyfifteen' ),
+			esc_url( wp_get_attachment_url() ),
+			$metadata['width'],
+			$metadata['height']
+		);
+	}
+
+	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		echo '<span class="comments-link">';
+		/* translators: %s: post title */
+		comments_popup_link( sprintf( __( 'Leave a comment<span class="screen-reader-text"> on %s</span>', 'twentyfifteen' ), get_the_title() ) );
+		echo '</span>';
+	}
+}
+endif;
+
+/**
+ * Determine whether blog/site has more than one category.
+ *
+ * @since Twenty Fifteen 1.0
+ *
+ * @return bool True of there is more than one category, false otherwise.
+ */
+function twentyfifteen_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'twentyfifteen_categories' ) ) ) {
+		// Create an array of all the categories that are attached to posts.
+		$all_the_cool_cats = get_categories( array(
+			'fields'     => 'ids',
+			'hide_empty' => 1,
+
+			// We only need to know if there is more than one category.
+			'number'     => 2,
+		) );
+
+		// Count the number of categories that are attached to the posts.
+		$all_the_cool_cats = count( $all_the_cool_cats );
+
+		set_transient( 'twentyfifteen_categories', $all_the_cool_cats );
+	}
+
+	if ( $all_the_cool_cats > 1 ) {
+		// This blog has more than 1 category so twentyfifteen_categorized_blog should return true.
+		return true;
+	} else {
+		// This blog has only 1 category so twentyfifteen_categorized_blog should return false.
+		return false;
+	}
+}
+
+/**
+ * Flush out the transients used in {@see twentyfifteen_categorized_blog()}.
+ *
+ * @since Twenty Fifteen 1.0
+ */
+function twentyfifteen_category_transient_flusher() {
+	// Like, beat it. Dig?
+	delete_transient( 'twentyfifteen_categories' );
+}
+add_action( 'edit_category', 'twentyfifteen_category_transient_flusher' );
+add_action( 'save_post',     'twentyfifteen_category_transient_flusher' );
+
+if ( ! function_exists( 'twentyfifteen_post_thumbnail' ) ) :
+/**
+ * Display an optional post thumbnail.
+ *
+ * Wraps the post thumbnail in an anchor element on index views, or a div
+ * element when on single views.
+ *
+ * @since Twenty Fifteen 1.0
+ */
+function twentyfifteen_post_thumbnail() {
+	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+		return;
+	}
+
+	if ( is_singular() ) :
+	?>
+
+	<div class="post-thumbnail">
+		<?php the_post_thumbnail(); ?>
+	</div><!-- .post-thumbnail -->
+
+	<?php else : ?>
+
+	<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
+		<?php
+			the_post_thumbnail( 'post-thumbnail', array( 'alt' => get_the_title() ) );
+		?>
+	</a>
+
+	<?php endif; // End is_singular()
+}
+endif;
+
+if ( ! function_exists( 'twentyfifteen_get_link_url' ) ) :
+/**
+ * Return the post URL.
+ *
+ * Falls back to the post permalink if no URL is found in the post.
+ *
+ * @since Twenty Fifteen 1.0
+ *
+ * @see get_url_in_content()
+ *
+ * @return string The Link format URL.
+ */
+function twentyfifteen_get_link_url() {
+	$has_url = get_url_in_content( get_the_content() );
+
+	return $has_url ? $has_url : apply_filters( 'the_permalink', get_permalink() );
+}
+endif;
+
+if ( ! function_exists( 'twentyfifteen_excerpt_more' ) && ! is_admin() ) :
+/**
+ * Replaces "[...]" (appended to automatically generated excerpts) with ... and a 'Continue reading' link.
+ *
+ * @since Twenty Fifteen 1.0
+ *
+ * @return string 'Continue reading' link prepended with an ellipsis.
+ */
+function twentyfifteen_excerpt_more( $more ) {
+	$link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
+		esc_url( get_permalink( get_the_ID() ) ),
+		/* translators: %s: Name of current post */
+		sprintf( __( 'Continue reading %s', 'twentyfifteen' ), '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span>' )
+		);
+	return ' &hellip; ' . $link;
+}
+add_filter( 'excerpt_more', 'twentyfifteen_excerpt_more' );
+endif;
+// Breadcrumbs
+function custom_breadcrumbs() {
+       
+    // Settings
+    $separator          = '/';
+    $breadcrums_id      = 'breadcrumbs';
+    $breadcrums_class   = 'breadcrumbs';
+    $home_title         = 'Home page';
+      
+    // If you have any custom post types with custom taxonomies, put the taxonomy name below (e.g. product_cat)
+    $custom_taxonomy    = 'product_cat';
+       
+    // Get the query & post information
+    global $post,$wp_query;
+       
+    // Do not display on the homepage
+    if ( !is_front_page() ) {
+       
+        // Build the breadcrums
+        echo '<ul id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
+           
+        // Home page
+        echo '<li class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
+        echo '<li class="separator separator-home"> ' . $separator . ' </li>';
+           
+        if ( is_archive() && !is_tax() && !is_category() && !is_tag() ) {
+              
+            echo '<li class="item-current item-archive"><strong class="bread-current bread-archive">' . post_type_archive_title($prefix, false) . '</strong></li>';
+              
+        } else if ( is_archive() && is_tax() && !is_category() && !is_tag() ) {
+              
+            // If post is a custom post type
+            $post_type = get_post_type();
+              
+            // If it is a custom post type display name and link
+            if($post_type != 'post') {
+                  
+                $post_type_object = get_post_type_object($post_type);
+                $post_type_archive = get_post_type_archive_link($post_type);
+              
+                echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
+                echo '<li class="separator"> ' . $separator . ' </li>';
+              
+            }
+              
+            $custom_tax_name = get_queried_object()->name;
+            echo '<li class="item-current item-archive"><strong class="bread-current bread-archive">' . $custom_tax_name . '</strong></li>';
+              
+        } else if ( is_single() ) {
+              
+            // If post is a custom post type
+            $post_type = get_post_type();
+              
+            // If it is a custom post type display name and link
+            if($post_type != 'post') {
+                  
+                $post_type_object = get_post_type_object($post_type);
+                $post_type_archive = get_post_type_archive_link($post_type);
+              
+                echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
+                echo '<li class="separator"> ' . $separator . ' </li>';
+              
+            }
+              
+            // Get post category info
+            $category = get_the_category();
+             
+            if(!empty($category)) {
+              
+                // Get last category post is in
+                $last_category = end(array_values($category));
+                  
+                // Get parent any categories and create array
+                $get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','),',');
+                $cat_parents = explode(',',$get_cat_parents);
+                  
+                // Loop through parent categories and store in variable $cat_display
+                $cat_display = '';
+                foreach($cat_parents as $parents) {
+                    $cat_display .= '<li class="item-cat">'.$parents.'</li>';
+                    $cat_display .= '<li class="separator"> ' . $separator . ' </li>';
+                }
+             
+            }
+              
+            // If it's a custom post type within a custom taxonomy
+            $taxonomy_exists = taxonomy_exists($custom_taxonomy);
+            if(empty($last_category) && !empty($custom_taxonomy) && $taxonomy_exists) {
+                   
+                $taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
+                $cat_id         = $taxonomy_terms[0]->term_id;
+                $cat_nicename   = $taxonomy_terms[0]->slug;
+                $cat_link       = get_term_link($taxonomy_terms[0]->term_id, $custom_taxonomy);
+                $cat_name       = $taxonomy_terms[0]->name;
+               
+            }
+              
+            // Check if the post is in a category
+            if(!empty($last_category)) {
+                echo $cat_display;
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
+                  
+            // Else if post is in a custom taxonomy
+            } else if(!empty($cat_id)) {
+                  
+                echo '<li class="item-cat item-cat-' . $cat_id . ' item-cat-' . $cat_nicename . '"><a class="bread-cat bread-cat-' . $cat_id . ' bread-cat-' . $cat_nicename . '" href="' . $cat_link . '" title="' . $cat_name . '">' . $cat_name . '</a></li>';
+                echo '<li class="separator"> ' . $separator . ' </li>';
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
+              
+            } else {
+                  
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
+                  
+            }
+              
+        } else if ( is_category() ) {
+               
+            // Category page
+            echo '<li class="item-current item-cat"><strong class="bread-current bread-cat">' . single_cat_title('', false) . '</strong></li>';
+               
+        } else if ( is_page() ) {
+               
+            // Standard page
+            if( $post->post_parent ){
+                   
+                // If child page, get parents 
+                $anc = get_post_ancestors( $post->ID );
+                   
+                // Get parents in the right order
+                $anc = array_reverse($anc);
+                   
+                // Parent page loop
+                foreach ( $anc as $ancestor ) {
+                    $parents .= '<li class="item-parent item-parent-' . $ancestor . '"><a class="bread-parent bread-parent-' . $ancestor . '" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
+                    $parents .= '<li class="separator separator-' . $ancestor . '"> ' . $separator . ' </li>';
+                }
+                   
+                // Display parent pages
+                echo $parents;
+                   
+                // Current page
+                echo '<li class="item-current item-' . $post->ID . '"><strong title="' . get_the_title() . '"> ' . get_the_title() . '</strong></li>';
+                   
+            } else {
+                   
+                // Just display current page if not parents
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '"> ' . get_the_title() . '</strong></li>';
+                   
+            }
+               
+        } else if ( is_tag() ) {
+               
+            // Tag page
+               
+            // Get tag information
+            $term_id        = get_query_var('tag_id');
+            $taxonomy       = 'post_tag';
+            $args           = 'include=' . $term_id;
+            $terms          = get_terms( $taxonomy, $args );
+            $get_term_id    = $terms[0]->term_id;
+            $get_term_slug  = $terms[0]->slug;
+            $get_term_name  = $terms[0]->name;
+               
+            // Display the tag name
+            echo '<li class="item-current item-tag-' . $get_term_id . ' item-tag-' . $get_term_slug . '"><strong class="bread-current bread-tag-' . $get_term_id . ' bread-tag-' . $get_term_slug . '">' . $get_term_name . '</strong></li>';
+           
+        } elseif ( is_day() ) {
+               
+            // Day archive
+               
+            // Year link
+            echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
+            echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
+               
+            // Month link
+            echo '<li class="item-month item-month-' . get_the_time('m') . '"><a class="bread-month bread-month-' . get_the_time('m') . '" href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</a></li>';
+            echo '<li class="separator separator-' . get_the_time('m') . '"> ' . $separator . ' </li>';
+               
+            // Day display
+            echo '<li class="item-current item-' . get_the_time('j') . '"><strong class="bread-current bread-' . get_the_time('j') . '"> ' . get_the_time('jS') . ' ' . get_the_time('M') . ' Archives</strong></li>';
+               
+        } else if ( is_month() ) {
+               
+            // Month Archive
+               
+            // Year link
+            echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
+            echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
+               
+            // Month display
+            echo '<li class="item-month item-month-' . get_the_time('m') . '"><strong class="bread-month bread-month-' . get_the_time('m') . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</strong></li>';
+               
+        } else if ( is_year() ) {
+               
+            // Display year archive
+            echo '<li class="item-current item-current-' . get_the_time('Y') . '"><strong class="bread-current bread-current-' . get_the_time('Y') . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</strong></li>';
+               
+        } else if ( is_author() ) {
+               
+            // Auhor archive
+               
+            // Get the author information
+            global $author;
+            $userdata = get_userdata( $author );
+               
+            // Display author name
+            echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><strong class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . 'Author: ' . $userdata->display_name . '</strong></li>';
+           
+        } else if ( get_query_var('paged') ) {
+               
+            // Paginated archives
+            echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</strong></li>';
+               
+        } else if ( is_search() ) {
+           
+            // Search results page
+            echo '<li class="item-current item-current-' . get_search_query() . '"><strong class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</strong></li>';
+           
+        } elseif ( is_404() ) {
+               
+            // 404 page
+            echo '<li>' . 'Error 404' . '</li>';
+        }
+       
+        echo '</ul>';
+           
+    }
+       
 }

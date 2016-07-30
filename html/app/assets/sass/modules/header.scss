@@ -1,4 +1,4 @@
-header{
+.header{
 	background-color: $header-bg;
 	padding-bottom: 20px;
 	.navbar-toggle{
@@ -35,10 +35,18 @@ header{
 				display: inline-block;
 				@include xs{
 					float: none;
+					padding: 0 2px;
 				}
 				padding: 0px 8px;
 			}
 		}
+	}
+	 .top-links ul span,.top-links ul a img {
+	  vertical-align: middle;
+	  display: inline-block;
+	}
+	.top-links ul a img{
+	  margin-right: 5px;
 	}
 }
 .language{

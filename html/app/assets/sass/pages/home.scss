@@ -44,7 +44,10 @@
                 font-size: 20px;
                 color: $white;
                 border: 1px solid $white;
-                text-decoration: none;
+                text-decoration: none;transition: all 0.3s linear 0s;
+                &:hover {
+                    background: $light-green;
+                }
                 @include xs {
                     font-size: 14px;
                     padding: 4px 10px;
@@ -54,7 +57,7 @@
     }
     .slick-arrow {
         position: absolute;
-        top: 50%;
+        top: 32%;
         background-color: rgba(68, 68, 68, 0.13);
         border: 0px;
         z-index: 1;
@@ -82,18 +85,35 @@
         right: 0px;
         .slider-control {
             padding: 0px 3px;
+            &:hover img{
+                opacity: 0.6;
+              }
         }
         img {
             margin: 0 auto;
-            max-width: 100%;
+            max-width: 262px;
+
               cursor: pointer;
+              opacity: 1;
+              transition: all 0.2s linear;
+              
         }
     }
 }
 
+.main {
+   & >  .container > .col-xs-12{
+        background: white;
+    }
+    
+}
 .about-us-links {
-    padding: 20px 0px 35px 0px;
-    background-color: $light-grey;
+    padding: 20px 0px 20px 0px;
+       margin: 0 auto;
+   
+    @include desktop {
+         max-width: 80%;
+    }
     a {
         display: block;
         text-decoration: none;
@@ -101,8 +121,10 @@
     .item {
         margin-top: 20px;
         background-color: $white;
-        padding: 18px 15px 16px 35px;
+        padding: 18px 15px 0px 35px;
+        text-align: center;
          @include xs {
+            padding: 15px;
          	text-align: center;
          }
     }
@@ -116,10 +138,22 @@
         font-family: $Roboto;
     }
     .icon {
-        float: right;
+        text-align: center;
+        width: 125px;
+        height:125px;
+        margin: 0 auto 20px;
+        overflow: hidden;
+        border-radius: 50%;
+        &:hover img {
+           -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
         img {
-            display: block;
+            margin: auto 0 10px auto;
             max-width: 100%;
+            border-radius: 50%;
+            transition: all 0.3s linear 0s;
+            border: 10px solid #e6e7e9;
         }
         @include xs {
         	float: none;
@@ -154,14 +188,23 @@
         padding-top: 10px;
         margin-left: -10px;
         margin-right: -10px;
+        .image {
+            max-width: 255px;
+            max-height: 178px;
+            overflow: hidden;
+            display: block;
+        }
         img {
             max-width: 100%;
-            width: 100%;
+            width: 100%;transition: all 0.3s linear 0s;
         }
         article,.listing-item {
             color: $medium-gray;
             font-family: $Roboto;
             padding: 0px 10px;
+            &:hover img {
+                transform: scale(1.1);
+            }
         }
         .excerpt-dash {
             display: none;
@@ -172,6 +215,7 @@
             line-height: 20px;
             border: none;
             margin: 20px 0px;
+            min-height: 46px;
             display: block;color: #58595b;
             a {
                 color: #58595b;
@@ -203,10 +247,14 @@
         }
     }
 }
-
+.search-form .form-group input {
+    border-width:1px;
+    border-color:#999999;
+   &:hover{border: 1px solid #66afe9;} 
+}
 .brands {
-    margin-top: 90px;
-    margin-bottom: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     .title {
         font-family: $VNF-Futura;
         font-size: 28px;
@@ -257,10 +305,21 @@
     .brands-list {
         margin-top: 50px;
         img {
-            margin: 0 auto;
+            margin: 0 auto;max-width: 100%;
         }
         .brand {
             padding: 0 3px;
         }
     }
+}
+.back {
+    text-align: center;
+     a {
+   border: 1px solid #dcdddf;       
+        background-color: #f5f6fa;
+    color: #333;
+    border-radius:3px;
+    display: inline-block;
+    padding: 5px 21px;
+}
 }
