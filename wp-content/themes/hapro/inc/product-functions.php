@@ -36,6 +36,7 @@ function codex_banner_init() {
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => null,
+		'exclude_from_search' => true,
 		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'revisions' ),
 		'taxonomies'         => array( 'post_tag' )
 	);

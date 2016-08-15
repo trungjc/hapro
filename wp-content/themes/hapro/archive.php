@@ -52,13 +52,18 @@ get_header(); ?>
 					while ( have_posts() ) : the_post(); ?>
 
 						
-						<article id="post-<?php the_ID(); ?>" <?php post_class('col-md-3 col-xs-12'); ?>
-						<a class="image-intro" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-							<?php
-								// Post thumbnail.
-								twentyfifteen_post_thumbnail();
-							?>
-						</a>
+						<article id="post-<?php the_ID(); ?>" <?php post_class('col-md-3 col-xs-12'); ?> >
+						
+								<?php if ( has_post_thumbnail() ) : ?>
+								<a class="image-intro" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+								<img src="<?php the_post_thumbnail_url(); ?>"/>
+								</a>
+							<?php else :  ?>
+								<a class="image-intro" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+								<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/no-image-300x300.gif"/>
+								</a>
+							<?php endif; ?>
+						
 							<header class="entry-header">
 								<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 							</header><!-- .entry-header -->

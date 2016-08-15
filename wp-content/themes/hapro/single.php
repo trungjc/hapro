@@ -23,9 +23,9 @@ get_header(); ?>
 					$cat_name=$parent->name;
 				?>
 					<header class="page-header" >
-						<?php echo do_shortcode('[wp_custom_image_category  size="full" term_id="'.$cat_id.'" ]');  ?>
+						<?php twentyfifteen_post_thumbnail(); //echo do_shortcode('[wp_custom_image_category  size="full" term_id="'.$cat_id.'" ]');  ?>
 						<div class="page-header-text">
-							<h1 class="page-title"><?php echo $cat_name_root ?></h1>		
+							<h1 class="page-title"><?php echo $cat_name ?></h1>		
 						<?php
 
 							the_archive_description( '<div class="taxonomy-description">', '</div>' );

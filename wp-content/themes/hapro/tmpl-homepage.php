@@ -43,7 +43,9 @@
                   <div id="home-slider-nav">
                      <?php while( have_rows('slider', $other_page) ): the_row(); ?>
                         <?php $image_thumb= get_sub_field('image-thumb');?>
-                        <div class="slider-control"><img src="<?php echo $image_thumb['sizes']['medium'] ?>" alt="<?php echo $image_thumb['caption'] ?>" /></div>
+                        <div class="slider-control" style="background-image:url('<?php echo $image_thumb['sizes']['large']  ?>');"
+
+                        ><img style="visibility: hidden;width:262px;height:113px" src="<?php echo $image_thumb['sizes']['large'] ?>" alt="<?php echo $image_thumb['caption'] ?>" /></div>
                     <?php endwhile; ?>  
                   </div>
                 </div>     
@@ -106,7 +108,7 @@
                        <?php foreach($acf_fields['brand-logo'] as $brand_logo) {  ?>
                         <div class="brand">
                           <a href="<?php echo $brand_logo['link'] ?>">
-                            <img src="<?php echo $brand_logo['logo-brand']['sizes']['medium'] ?>" alt="<?php echo $brand_logo['logo-brand']['caption'] ?>" />
+                            <img src="<?php echo $brand_logo['logo-brand']['sizes']['large'] ?>" alt="<?php echo $brand_logo['logo-brand']['caption'] ?>" />
                           </a>
                         </div>              
                          <?php }?>

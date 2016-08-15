@@ -11,7 +11,15 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('col-md-3 col-xs-12'); ?>>
-	<?php twentyfifteen_post_thumbnail(); ?>
+	<?php if ( has_post_thumbnail() ) : ?>
+								<a class="image-intro" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+								<img src="<?php the_post_thumbnail_url(); ?>"/>
+								</a>
+							<?php else :  ?>
+								<a class="image-intro" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+								<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/no-image-300x300.gif"/>
+								</a>
+							<?php endif; ?>
 
 	<header class="entry-header">
 		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>

@@ -14,7 +14,7 @@ function whispli_custom_nav_menu($location) {
 			//	_wp_menu_item_classes_by_context( $primary_menu_items );
 			$sorted_menu_items = $parent_items = $sub_items = $menu_items_with_children = array();
 			$menu_item_active  = false;
-			foreach ( (array) $primary_menu_items as &$menu_item ) {
+			foreach ( (array) $primary_menu_items as $menu_item ) {
 				$sorted_menu_items[$menu_item->menu_order] = $menu_item;
 				if ( $menu_item->menu_item_parent ) {
 					$menu_items_with_children[$menu_item->menu_item_parent] = true;
