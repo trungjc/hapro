@@ -14,7 +14,7 @@
 <head>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="X-UA-Compatiable" cotent="IE=Edge">
+	<meta http-equiv="X-UA-Compatiable" cotent="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="apple-touch-icon" type="image/png" href="apple-touch-icon.png">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -76,7 +76,11 @@ if ( isset( $locations['footer_primary_menu'] ) ) {
 					   $name2= 'Liên hệ';
 
 					  endif; ?>
-                <li><a href="<?php echo get_page_link($tuyendung); ?>"><?php echo $name1 ?></a></li>
+<?php
+ 
+    $category_link = get_category_link( 52);
+?>
+                <li><a href="<?php echo esc_url( $category_link ); ?>"><?php echo $name1 ?></a></li>
                 <li><a href="<?php echo get_page_link($contact); ?>"><?php echo $name2 ?></a></li>
               </ul>
             </div>
@@ -112,7 +116,7 @@ if ( isset( $locations['footer_primary_menu'] ) ) {
 							<?php $has_sub = in_array( $parent_item->ID, array_keys( $main_menu[2] ) ); ?>
 							<li class="<?php echo implode( ' ', $parent_item->classes ); ?>">
 								<a <?php if ( $has_sub ) {
-									echo 'href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"';
+									echo 'href="' . apply_filters( 'the_permalink', $parent_item->url ) . '" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"';
 								} else {
 									echo 'href=' . apply_filters( 'the_permalink', $parent_item->url ) . '';
 								} ?>>

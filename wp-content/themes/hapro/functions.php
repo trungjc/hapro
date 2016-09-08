@@ -193,42 +193,8 @@ wp_enqueue_script( 'whispli-plugin', get_template_directory_uri() . '/assets/js/
 add_filter('show_admin_bar', '__return_false');
 add_action( 'wp_enqueue_scripts', 'whispli_scripts' );
 
-/**
- * Custom body class
- */
 
-add_filter( 'body_class', 'whispli_body_classes' );
-function whispli_body_classes( $classes ) {
-	// Remove default body classes
-	$classes = [ ];
-	if ( is_page_template( 'tmpl-blog.php' ) ) {
-		$classes[] = 'blog category';
-	}
-	if ( is_page_template( 'tmpl-about.php' ) ) {
-		$classes[] = 'about';
-	}
-	if ( is_page_template( 'tmpl-homepage.php' ) ) {
-		$classes[] = 'home';
-	}
-	if ( is_page_template( 'single-product.php' ) || is_singular( 'product' ) ) {
-		$classes[] = 'product';
-	} elseif ( is_single() ) {
-		$classes[] = 'blog-detail';
-	}
-	if ( is_page_template( 'tmpl-term.php' ) ) {
-		$classes[] = 'full-terms-page tc-page';
-	}
-	if ( is_page_template( 'tmpl-informant-terms.php' ) ) {
-		$classes[] = 'informant-terms-page tc-page';
-	}
-	if ( is_page_template( 'tmpl-contact.php' ) ) {
-		$classes[] = 'contact-page';
-	}
-	if ( is_page_template( 'tmpl-partner.php' ) ) {
-		$classes[] = 'partner';
-	}
-	return $classes;
-}
+
 
 /**
  * Define some page id
@@ -478,7 +444,7 @@ function twentyfifteen_excerpt_more( $more ) {
 	$link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
 		esc_url( get_permalink( get_the_ID() ) ),
 		/* translators: %s: Name of current post */
-		sprintf( __( 'Continue reading %s', 'twentyfifteen' ), '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span>' )
+		sprintf( __( 'đọc thêm', 'twentyfifteen' ), '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span>' )
 		);
 	return ' &hellip; ' . $link;
 }
@@ -712,4 +678,144 @@ function custom_breadcrumbs() {
            
     }
        
+}
+
+
+function remove_pages_from_search($query) {
+if ($query->is_search) {
+$query->set('post_type', 'post');
+}
+return $query;
+}
+add_filter('pre_get_posts','remove_pages_from_search');
+
+function remove_post_type_page_from_search() {
+    global $wp_post_types;
+    $wp_post_types['page']->exclude_from_search = true;
+}
+add_action('init', 'remove_post_type_page_from_search');
+
+function custom_pagination($numpages = '', $pagerange = '', $paged='') {
+
+  if (empty($pagerange)) {
+    $pagerange = 2;
+  }
+
+  /**
+   * This first part of our function is a fallback
+   * for custom pagination inside a regular loop that
+   * uses the global $paged and global $wp_query variables.
+   * 
+   * It's good because we can now override default pagination
+   * in our theme, and use this function in default quries
+   * and custom queries.
+   */
+  global $paged;
+  if (empty($paged)) {
+    $paged = 1;
+  }
+  if ($numpages == '') {
+    global $wp_query;
+    $numpages = $wp_query->max_num_pages;
+    if(!$numpages) {
+        $numpages = 1;
+    }
+  }
+
+  /** 
+   * We construct the pagination arguments to enter into our paginate_links
+   * function. 
+   */
+  $pagination_args = array(
+    'base'            => @add_query_arg('paged','%#%'),
+    'format'          => 'page/%#%',
+    'total'           => $numpages,
+    'current'         => $paged,
+    'show_all'        => False,
+    'end_size'        => 1,
+    'mid_size'        => $pagerange,
+    'prev_next'       => True,
+    'prev_text'       => __('&laquo;'),
+    'next_text'       => __('&raquo;'),
+    'type'            => 'plain',
+    'add_args'        => false,
+    'add_fragment'    => ''
+  );
+
+  $paginate_links = paginate_links($pagination_args);
+
+  if ($paginate_links) {
+    echo "<ul class='pagination custom-paging '>";
+     	echo "<li>";
+      		echo $paginate_links;
+      	echo "</li>";
+    echo "</ul>";
+  }
+
+}
+
+
+function joints_related_posts_default() {
+    global $post;
+    $tags = wp_get_post_tags( $post->ID );
+
+    if($tags) {
+        foreach( $tags as $tag ) {
+            $tag_arr .= $tag->slug . ',';
+        }
+
+        $args = array(
+        	'post_type' => 'post',
+            'tag' => $tag_arr,
+            'numberposts' => 10, /* You can change this to show more */
+            'post__not_in' => array($post->ID)
+        );
+        $related_posts = get_posts( $args );
+        
+        if($related_posts) { ?>
+        <div class="list-hot-relate">
+        	<h4 class="relate-title title-black blue">TIN LIÊN QUAN</h4>
+        	<div class="related_posts-default list-item  list-hot">
+        <div class="clearfix">
+           <?php foreach ( $related_posts as $post ) : setup_postdata( $post );   ?>
+                   
+                    <div class="list-item-blog clearfix" >
+                    		<?php $product_thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium' ) ;?>
+						<a class="img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo whispli_resize_image($product_thumbnail_src[0]); ?>)">							
+							<img src="<?php echo whispli_resize_image($product_thumbnail_src[0]); ?>">
+							</a>
+                         <div class="body-text">
+	                         <h3 class=" heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+	                         </h3>
+	                     </div>
+                    </div>
+            <?php endforeach; ?>
+             </div></div></div>
+            <?php } } wp_reset_postdata();
+   
+}
+
+// post views
+function setAndViewPostViews($postID) {
+    $count_key = 'views';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+    return $count; /* so you can show it */
+}
+
+function is_type_page() { // Check if the current post is a page
+	global $post;
+
+	if ($post->post_type == 'page') {
+		return true;
+	} else {
+		return false;
+	}
 }

@@ -20,7 +20,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'haprogroup');
+define('DB_NAME', 'hapro');
 
 /** MySQL database username */
 define('DB_USER', 'root');
@@ -77,6 +77,8 @@ $table_prefix  = 'jc_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
+define('WP_HOME','http://localhost/hapro/');
+define('WP_SITEURL','http://localhost/hapro/');
 define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */

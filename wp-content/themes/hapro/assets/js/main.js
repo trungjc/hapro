@@ -10,12 +10,12 @@ Hapro = {
             });
             $('.navbar-nav li.parent-menu').on('click', function() {
                 var $el = $(this);
-                if ($el.hasClass('open')) {
+                //if ($el.hasClass('open')) {
                     var $a = $el.children('a.dropdown-toggle');
                     if ($a.length && $a.attr('href')) {
                         location.href = $a.attr('href');
                     }
-                }
+               // }
             });
         },
         init: function() {
@@ -142,4 +142,12 @@ jQuery(document).ready(function($) {
     $(window).scroll(function() {
         stickyNav();
     });
+
+      if($('.image-intro img').length){
+          $('.image-intro img').each(function(){
+            var source = $(this).attr('src');
+            $(this).parent().css('background-image','url('+source+')')
+          })
+        }
+       // $('.post .entry-content').matchHeight();
 })

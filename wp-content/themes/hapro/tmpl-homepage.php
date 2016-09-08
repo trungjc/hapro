@@ -65,7 +65,7 @@
                  <?php foreach($acf_fields['box_intro'] as $box_intro) { ?>
                   <div class="col-xs-12 col-sm-4">
                       <div class="item">
-                        <a href="#">
+                        <a href=" <?php echo $box_intro['link'] ?>">
                           <div class="icon">
                                 <img src="<?php echo $box_intro['image-icon']['url'] ?>" alt="<?php echo $box_intro['image-icon']['caption'] ?>" />
                           </div>

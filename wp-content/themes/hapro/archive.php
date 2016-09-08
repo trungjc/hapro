@@ -27,6 +27,7 @@ get_header(); ?>
 					$parent_cat = $category->category_parent;
 					//print_r($parent_cat);
 					$cat_id = $category->cat_ID; 
+
 				?>
 					<header class="page-header" >
 						<?php echo do_shortcode('[wp_custom_image_category  size="full" term_id="'.$cat_id.'" ]');  ?>
@@ -51,7 +52,57 @@ get_header(); ?>
 					// Start the Loop.
 					while ( have_posts() ) : the_post(); ?>
 
-						
+						<?php
+							if ($cat_id==52 || $cat_id==49) { ?>
+
+						<article id="post-<?php the_ID(); ?>" <?php post_class('media list-post'); ?> >
+						<div class="col-xs-12 col-md-3">
+								<?php if ( has_post_thumbnail() ) : ?>
+
+								
+									<a class="image-intro pull-left" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+									<img src="<?php the_post_thumbnail_url(); ?>"/>
+									</a>
+								<?php else :  ?>
+									<a class="image-intro  pull-left" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+									<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/no-image-300x300.gif"/>
+									</a>
+								
+							<?php endif; ?>
+							</div>
+							<div class="col-xs-12 col-md-9">
+								<header class="entry-header">
+									<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+								</header><!-- .entry-header -->
+
+							<div class="entry-content">
+								<?php the_excerpt(); ?>
+								<?php
+									wp_link_pages( array(
+										'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
+										'after'       => '</div>',
+										'link_before' => '<span>',
+										'link_after'  => '</span>',
+										'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
+										'separator'   => '<span class="screen-reader-text">, </span>',
+									) );
+								?><?php
+							 $currentlang = get_bloginfo('language');
+							 if($currentlang=="en-US"):
+							   $more = 'read more';
+							?>
+							<?php else: 
+							  $more = 'đọc thêm';
+
+							  endif;  ?>
+								<a class="more-link" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo $more; ?> &raquo;</a></div>
+							</div><!-- .entry-content -->
+							
+							  
+							
+						</article><!-- #post-## -->
+							<?php } else { ?>
+
 						<article id="post-<?php the_ID(); ?>" <?php post_class('col-md-3 col-xs-12'); ?> >
 						
 								<?php if ( has_post_thumbnail() ) : ?>
@@ -93,6 +144,9 @@ get_header(); ?>
 							  <div class="cleafix"><a class="more" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo $more; ?> &raquo;</a></div>
 							
 						</article><!-- #post-## -->
+
+						<?php	}
+						 ?>
 
 				<?php	// End the loop.
 			endwhile; ?>

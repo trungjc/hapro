@@ -18,12 +18,12 @@ get_header(); ?>
 					$root = get_category($category[0]->parent);
 					$cat_name_root=$root->name;
 					$parent = get_category($category[0]->term_id);
-					//print_r($parent);
+					
 					$cat_id=$parent->term_id;
 					$cat_name=$parent->name;
 				?>
 					<header class="page-header" >
-						<?php twentyfifteen_post_thumbnail(); //echo do_shortcode('[wp_custom_image_category  size="full" term_id="'.$cat_id.'" ]');  ?>
+						<?php echo do_shortcode('[wp_custom_image_category  size="full" term_id="'.$cat_id.'" ]');  ?>
 						<div class="page-header-text">
 							<h1 class="page-title"><?php echo $cat_name ?></h1>		
 						<?php
@@ -37,7 +37,12 @@ get_header(); ?>
 			<?php
 			// Start the loop.
 			while ( have_posts() ) : the_post();
-			custom_breadcrumbs();
+			 if(function_exists('bcn_display'))
+			    {
+			    	echo '<div  class="breadcrumbs" id="breadcrumbs">';
+			        bcn_display();
+			        echo '</div>';
+			    }
 			echo "<h1 class='page-title'>".$cat_name .'</h1>';
 				/*
 				 * Include the post format-specific template for the content. If you want to
@@ -60,7 +65,7 @@ get_header(); ?>
 			// End the loop.
 			endwhile;
 			?>
-			<div class="back"><a href="<?php  $category_link = get_category_link( $cat_id ); echo esc_url($category_link); ?>" title="Category Name">Back</a></div>
+			<div class="back" style="display:none"><a href="<?php  $category_link = get_category_link( $cat_id ); echo esc_url($category_link); ?>" title="Category Name">Back</a></div>
 			</div>
 			</div>
 		</main><!-- .site-main -->
