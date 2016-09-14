@@ -7,7 +7,9 @@
  * @since Twenty Fifteen 1.0
  */
 
-get_header(); ?>
+get_header();$category = get_the_category();
+$hierarchy = array_reverse( get_ancestors( $category[0]->term_id, 'category' ) );
+$hierarchy[] = $category[0]->term_id; ?>
 
 	<section id="primary" class="content-area container">
 		<main id="main" class="site-main row" role="main">

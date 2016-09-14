@@ -60,7 +60,7 @@ if ( isset( $locations['footer_primary_menu'] ) ) {
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <div class="top-links">
+            <div class="top-links" style="display:none">
               <ul class="clearfix">
                 <?php pll_the_languages(array('show_flags'=>1, 'show_names'=>1)); ?>
                  <?php if($currentlang=="en-US"):
@@ -86,14 +86,14 @@ if ( isset( $locations['footer_primary_menu'] ) ) {
             </div>
           </div>
           <div class="header-bottom">
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-8">
               <div class="logo">
               <h1 class="site-title"><a  href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo( 'name' ); ?>" class="img-responsive"></a></h1>
              
 
               </div>
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-4">
 
               <div class="search-box">
                <?php get_search_form(); ?>

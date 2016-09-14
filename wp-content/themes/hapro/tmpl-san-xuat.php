@@ -33,7 +33,7 @@
                         <div class="container-grid sanxuatgrid">
                             <div class="clearfix">
                                 <?php $i=0; foreach($acf_fields['item'] as $page_info) { ?>
-                                <div class="col-xs-12 col-sm-3">
+                                <div class="col-xs-12 col-sm-3 col-md-2">
                                     <div class="item">
                                        <h3><?php echo $page_info['title'] ?></h3>
                                             <a href="<?php echo $page_info['link'] ?>"><div  class="image-intro" style="background-image:url(<?php echo $page_info['feature-image']['sizes']['medium'] ?>)">

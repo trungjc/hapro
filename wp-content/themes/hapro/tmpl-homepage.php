@@ -23,6 +23,7 @@
        <style>
          .slider-main:not(.slick-initialized) {
           display: none;
+min-height:320px
          }
        </style>
           <div class="container">
