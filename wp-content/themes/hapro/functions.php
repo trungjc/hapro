@@ -1,4 +1,3 @@
-
 <?php
 /**
  * whispli functions and definitions.
@@ -795,7 +794,7 @@ function joints_related_posts_default() {
         <div class="list-hot-relate">
         	<h4 class="relate-title title-black blue">Bài viết liên quan</h4>
         	<div class="related_posts-default list-item  list-hot">
-        <div class="clearfix list-items">
+       <div class="clearfix list-items">
            <?php foreach ( $related_posts as $post ) : setup_postdata( $post );   ?>
                    
                     <div class="list-item-blog clearfix" >
@@ -827,13 +826,4 @@ function setAndViewPostViews($postID) {
         update_post_meta($postID, $count_key, $count);
     }
     return $count; /* so you can show it */
-}
-
-add_action( 'after_setup_theme', 'remove_post_formats', 11 ); 
-
-function remove_post_formats() {
-
-    // Add this line to remove post formats
-    remove_theme_support( 'post-formats');
-
 }
