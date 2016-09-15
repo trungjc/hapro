@@ -47,6 +47,14 @@ get_header(); ?>
 				<h1 class="page-title"><?php
 				printf( __( '%s', 'slidingdoor' ), '<span>' . single_cat_title( '', false ) . '</span>' );
 				?></h1>		
+				<div class="clearfix">	
+		<?php	// Previous/next page navigation.
+			the_posts_pagination( array(
+				'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
+				'next_text'          => __( 'Next page', 'twentyfifteen' ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>',
+			) ); ?>
+		</div>
 					<div class="row">
 					<?php
 					// Start the Loop.
@@ -71,9 +79,12 @@ get_header(); ?>
 							<?php endif; ?>
 							</div>
 							<div class="col-xs-12 col-md-9">
-								<header class="entry-header">
-									<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-								</header><!-- .entry-header -->
+								<h3 class="entry-header">
+								<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+								<?php the_title( )?>
+								</a>
+									
+								</h3><!-- .entry-header -->
 
 							<div class="entry-content">
 								<?php the_excerpt(); ?>
@@ -115,9 +126,12 @@ get_header(); ?>
 								</a>
 							<?php endif; ?>
 						
-							<header class="entry-header">
-								<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-							</header><!-- .entry-header -->
+							<h3 class="entry-header">
+								<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+								<?php the_title( )?>
+								</a>
+									
+								</h3><!-- .entry-header -->
 
 							<div class="entry-content">
 								<?php the_excerpt(); ?>
@@ -150,13 +164,15 @@ get_header(); ?>
 
 				<?php	// End the loop.
 			endwhile; ?>
-		</div>	
+		</div>
+		<div class="clearfix">	
 		<?php	// Previous/next page navigation.
 			the_posts_pagination( array(
 				'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
 				'next_text'          => __( 'Next page', 'twentyfifteen' ),
 				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>',
 			) ); ?>
+		</div>
 		</div>
 		
 		

@@ -49,6 +49,24 @@ Hapro = {
                 }]
 
             });
+            
+            $(".related_posts-default .list-items").slick({
+                slidesToScroll: 1,
+                autoplay: true,
+                 arrows: true,
+                  slidesToScroll: 1,
+                slidesToShow: 4,
+                prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+                nextArrow: '<button type="button" class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+                responsive: [{
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 1
+                    }
+                }]
+
+            });
             $("#home-slider-nav").slick({
                 asNavFor: "#home-slider",
                 slidesToShow: 5,
@@ -95,6 +113,7 @@ Hapro = {
             $("#brands-slider").slick({
                 slidesToScroll: 1,
                 slidesToShow: 6,
+                 autoplaySpeed: 4000,
                 autoplay: true,
                 prevArrow: $("#slider-prev"),
                 nextArrow: $("#slider-next"),

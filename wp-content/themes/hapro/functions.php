@@ -476,7 +476,7 @@ function custom_breadcrumbs() {
     $separator          = '/';
     $breadcrums_id      = 'breadcrumbs';
     $breadcrums_class   = 'breadcrumbs';
-    $home_title         = 'Home page';
+    $home_title         = 'Home';
       
     // If you have any custom post types with custom taxonomies, put the taxonomy name below (e.g. product_cat)
     $custom_taxonomy    = 'product_cat';
@@ -793,9 +793,9 @@ function joints_related_posts_default() {
         
         if($related_posts) { ?>
         <div class="list-hot-relate">
-        	<h4 class="relate-title title-black blue">TIN LIÊN QUAN</h4>
+        	<h4 class="relate-title title-black blue">Bài viết liên quan</h4>
         	<div class="related_posts-default list-item  list-hot">
-        <div class="clearfix">
+        <div class="clearfix list-items">
            <?php foreach ( $related_posts as $post ) : setup_postdata( $post );   ?>
                    
                     <div class="list-item-blog clearfix" >
@@ -829,121 +829,6 @@ function setAndViewPostViews($postID) {
     return $count; /* so you can show it */
 }
 
-function is_type_page() { // Check if the current post is a page
-	global $post;
-
-	if ($post->post_type == 'page') {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-// Filter Template Hierarchy
-/*function ww_new_subcat_hierarchy() {	
-	$category = get_queried_object();
-
-	$parent_id = $category->category_parent;
-
-	$templates = array();
-	
-	if ( $parent_id == 0 ) {
-		// Use default values from get_category_template()
-		$templates[] = "category-{$category->slug}.php";
-		$templates[] = "category-{$category->term_id}.php";
-		$templates[] = 'category.php';		
-	} else {
-		// Create replacement $templates array
-		$parent = get_category( $parent_id );
-
-		// Current first
-		$templates[] = "category-{$category->slug}.php";
-		$templates[] = "category-{$category->term_id}.php";
-
-		// Parent second
-		$templates[] = "category-{$parent->slug}.php";
-		$templates[] = "category-{$parent->term_id}.php";
-		$templates[] = 'category.php';	
-	}
-	return locate_template( $templates );
-}
-
-add_filter( 'category_template', 'ww_new_subcat_hierarchy' );
-*/
-/*
-function pu_parent_category_hierarchy()
-{
-    $category = get_queried_object();
-    $templates = array();
-
-    // Add default category template files
-    $templates[] = "category-{$category->slug}.php";
-    $templates[] = "category-{$category->term_id}.php";
-
-    if ( $category->category_parent != 0 )
-    {
-        $parent = get_category( $category->category_parent );
-
-        if(!empty($parent))
-        {
-            $templates[] = "category-{$parent->slug}.php";
-            $templates[] = "category-{$parent->term_id}.php";
-        }
-    }
-
-    $templates[] = 'category.php';
-
-    return locate_template( $templates );
-}
-add_filter( 'category_template', 'pu_parent_category_hierarchy' );
-
- */
-/*function get_top_category() {
-    $cats = get_the_category(); // category object
-    $top_cat_obj = array();
-
-    foreach($cats as $cat) {
-        if ($cat->parent == 0) {
-            $top_cat_obj[] = $cat;  
-        }
-    }
-    $top_cat_obj = $top_cat_obj[0];
-    return $top_cat_obj;
-}*/
-/*
-function new_subcategory_hierarchy() {  
-    $category = get_queried_object();
- 
-    $parent_id = $category->category_parent;
- 
-    $templates = array();
-     print_r($parent_id);
-    if ( $parent_id == 0 ) {
-        // Use default values from get_category_template()
-        $templates[] = "category-{$category->slug}.php";
-        $templates[] = "category-{$category->term_id}.php";
-        $templates[] = 'category.php';      
-    } else {
-    	
-        // Create replacement $templates array
-        $parent = get_category( $parent_id );
- 		
-        // Current first
-        $templates[] = "category-{$category->slug}.php";
-        $templates[] = "category-{$category->term_id}.php";
- 
-        // Parent second
-        $templates[] = "category-{$parent->slug}.php";
-        $templates[] = "category-{$parent->term_id}.php";
-        $templates[] = 'category.php';  
-    }
-    return locate_template( $templates );
-}
- 
-add_filter( 'category_template', 'new_subcategory_hierarchy' );*/
-
-// Use the after_setup_theme hook with a priority of 11 to load after the
-// parent theme, which will fire on the default priority of 10
 add_action( 'after_setup_theme', 'remove_post_formats', 11 ); 
 
 function remove_post_formats() {

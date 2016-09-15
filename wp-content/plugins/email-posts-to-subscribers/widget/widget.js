@@ -84,7 +84,7 @@ function elp_submitresult()
 				}
 				else if((http_req.responseText).trim() == "subscribed-pending-doubleoptin")
 				{
-					alert('You have successfully subscribed to the newsletter. You will receive a confirmation email in few minutes. Please follow the link in it to confirm your subscription. If the email takes more than 15 minutes to appear in your mailbox, please check your spam folder.');
+					alert('Bạn đã đăng ký thành công bản tin. Bạn sẽ nhận được một email xác nhận trong vài phút. Hãy làm theo các liên kết trong đó để xác nhận đăng ký của bạn. Nếu email phải mất hơn 15 phút để xuất hiện trong hộp thư của bạn, xin vui lòng kiểm tra thư mục thư rác của bạn.');
 					document.getElementById("elp_msg").innerHTML = "Subscribed successfully.";
 					document.getElementById("elp_txt_email").value = "";
 					document.getElementById("elp_txt_name").value = "";

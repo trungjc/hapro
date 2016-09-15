@@ -22,8 +22,11 @@
        <section class="home-slider">
        <style>
          .slider-main:not(.slick-initialized) {
-          display: none;
-min-height:320px
+          opacity: 0;
+            min-height:320px
+         }
+         .slider-main.slick-initialized {
+          opacity: 1;
          }
        </style>
           <div class="container">

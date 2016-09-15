@@ -7,9 +7,7 @@
  * @since Twenty Fifteen 1.0
  */
 
-get_header();$category = get_the_category();
-$hierarchy = array_reverse( get_ancestors( $category[0]->term_id, 'category' ) );
-$hierarchy[] = $category[0]->term_id; ?>
+get_header(); ?>
 
 	<section id="primary" class="content-area container">
 		<main id="main" class="site-main row" role="main">
@@ -25,7 +23,7 @@ $hierarchy[] = $category[0]->term_id; ?>
 					$cat_name=$parent->name;
 				?>
 					<header class="page-header" >
-						<?php echo do_shortcode('[wp_custom_image_category  size="full" term_id="'.$cat_id.'" ]');  ?>
+						
 						<div class="page-header-text">
 							<h1 class="page-title"><?php echo $cat_name ?></h1>		
 						<?php
@@ -45,7 +43,6 @@ $hierarchy[] = $category[0]->term_id; ?>
 			        bcn_display();
 			        echo '</div>';
 			    }
-			echo "<h1 class='page-title'>".$cat_name .'</h1>';
 				/*
 				 * Include the post format-specific template for the content. If you want to
 				 * use this in a child theme, then include a file called called content-___.php
@@ -67,7 +64,9 @@ $hierarchy[] = $category[0]->term_id; ?>
 			// End the loop.
 			endwhile;
 			?>
-			<div class="back" style="display:none"><a href="<?php  $category_link = get_category_link( $cat_id ); echo esc_url($category_link); ?>" title="Category Name">Back</a></div>
+				<?php 
+joints_related_posts_default() ;
+			?>
 			</div>
 			</div>
 		</main><!-- .site-main -->

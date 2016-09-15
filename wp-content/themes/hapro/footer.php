@@ -19,13 +19,8 @@
 	 		<div class="col-xs-12"> 			
 				<div class="footer">
 			        <div class="footer-wrapper ">
-				        <div class="row">			        	
-				          <div class="col-xs-12">
-				            <div class="footer-logo"><a  href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer-logo.png" alt="Footer Logo"></a></div>
-				          </div>
-				        </div>
 				         <div class="row">			         	
-				          <div class="col-xs-12 col-sm-4">
+				          <div class="col-xs-12 col-sm-3">
 				            <div class="footer-block">
 				                <?php if ( has_nav_menu( 'footer_primary_menu' ) ) : ?>
 								<nav class="footer-links block-list" role="navigation" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'twentysixteen' ); ?>">
@@ -39,8 +34,9 @@
 							<?php endif; ?>
 				            </div>
 				          </div>
-				          <div class="col-xs-12 col-sm-4">
+				          <div class="col-xs-12 col-sm-6">
 				            <div class="footer-block">
+				            <div class="footer-logo"><a  href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo-footer.png" alt="Footer Logo"></a></div>
 				              <?php if ( is_active_sidebar( 'sidebar-3' ) ) : ?>
 									<div id="widget-area" class="widget-area" role="complementary">
 										<?php dynamic_sidebar( 'sidebar-3' ); ?>
@@ -48,7 +44,7 @@
 								<?php endif; ?>
 				            </div>
 				          </div>
-				          <div class="col-xs-12 col-sm-4">
+				          <div class="col-xs-12 col-sm-3">
 				            <div class="footer-block">
 				              <div class="follow-us-contact">
 				              <?php if ( is_active_sidebar( 'sidebar-4' ) ) : ?>
