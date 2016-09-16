@@ -10862,11 +10862,10 @@ body {
 }
 
 .header .top-links {
-   margin-top: 5px;
-    position: absolute;
-    z-index: 2;right: 10px;
-    top: -14px;
+    margin-top: 5px;
+    float: right
 }
+
 @media screen and (max-width: 767px) {
     .header .top-links {
         float: none;
@@ -10892,7 +10891,7 @@ body {
 
 .header .top-links>ul>li {
     display: inline-block;
-    padding: 0px 
+    padding: 0px 8px
 }
 
 @media screen and (max-width: 767px) {
@@ -10907,9 +10906,7 @@ body {
     vertical-align: middle;
     display: inline-block
 }
-.header .top-links ul span {
-    display: none;
-}
+
 .header .top-links ul a img {
     margin-right: 5px
 }
@@ -11097,12 +11094,7 @@ background-position: center center;
     left: 60px;
     z-index: 3
 }
-@media (min-width : 1600px){
-    body .home-slider .slider-item {
-        max-height: 520px;
-        min-height: 520px;
-    }
-}
+
 @media screen and (max-width: 767px) {
     .home-slider .slider-item .description {
         left: 50%;
@@ -11518,6 +11510,7 @@ background-size: 75%;
 }
 
 .footer .block-list ul li {
+    border-bottom: 1px solid #33634b;
     padding: 0px 4px 0px
 }
 
@@ -11528,6 +11521,7 @@ background-size: 75%;
 .footer .block-list ul li a,
 .footer .block-list ul li span {
     font-weight: 400;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
     color: #fff
 }
@@ -11977,7 +11971,7 @@ figure {
 .menu-sub-page li a {
     color: #333;
     display: block; border-bottom: 1px solid #ddd;
-     padding: 5px 10px 5px 40px;
+     padding: 10px 10px 10px 40px;
 }
 .menu-sub-page  li.parent a{
     text-transform: uppercase;
@@ -12052,8 +12046,6 @@ display: none;
 }
 .list-items {
     position: relative;
-}.slider-control {
-    cursor: pointer;
 }
 .the-title a,.the-title {
     color: #333;text-transform: uppercase;
@@ -12061,9 +12053,7 @@ display: none;
     line-height: 1.4;
 }
 .category-des {
-   border-bottom: 1px solid #ddd;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    margin-bottom:40px;
 }
 .category-des .pull-left {
     margin-right: 10px;
@@ -12087,27 +12077,4 @@ display: none;
 .list-product >  div {
     padding-left:5px;
     padding-right: 5px;
-}
-
-
-.search-box {
-    margin-top: 30px;
-}
-
-.search-form .form-group input {
-    border-radius: 0;
-    width: 178px !important;
-    border-color: #73b539;
-    display: inline-block;
-}
-.search-form .form-group .search-submit {
-   color: white;
-   position: static;
-    background: #009344 none repeat scroll 0 0;
-    display: inline-block;
-}
-.search-form .form-group i {
-    left: 160px;
-    top:7px;
-    position: absolute;
 }
