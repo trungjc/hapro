@@ -54,15 +54,10 @@ get_header(); ?>
 						printf( __( '%s', 'slidingdoor' ), '<span>' . single_cat_title( '', false ) . '</span>' );
 						?></h1>
 						<div class=" category-des media">
-							<div class="pull-left">
-								<?php echo do_shortcode('[wp_custom_image_category  size="full" term_id="'.$cat_id.'" ]');  ?>
-							</div>				
-							<div class="page-header-text ">
-								
-								<?php
+							<div class="pull-left"><?php echo do_shortcode('[wp_custom_image_category  size="full" term_id="'.$cat_id.'" ]');  ?></div>				
+							<div class="page-header-text "><?php
 									the_archive_description( '<div class="taxonomy-description">', '</div>' );
-								?>
-							</div>
+								?></div>
 						</div>
 							<?php //neu category bang 56 thi hien thi ra list category
 					if ($cat_id==56) { ?>

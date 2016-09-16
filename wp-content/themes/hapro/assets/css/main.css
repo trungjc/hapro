@@ -11807,7 +11807,9 @@ figure {
 .navigation.post-navigation {
     display: none;
 }
-
+.category-des .pull-left:empty {
+    display: none;
+}
 .post .image-intro {
     display: block;
     min-height: 175px;
