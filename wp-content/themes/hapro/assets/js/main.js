@@ -32,6 +32,7 @@ Hapro = {
             this.replaceBG('.page-header .post-thumbnail img', '.page-header .post-thumbnail');
             this.replaceBG('.brand img', '.brand');
             $('.category-grid article').matchHeight();
+            $('.hethongbanle .page-grid .col-sm-3').matchHeight();
         },
         bannerSlider: function() {
             $("#home-slider").slick({

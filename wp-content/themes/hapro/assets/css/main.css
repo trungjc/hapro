@@ -11824,6 +11824,45 @@ figure {
 .category-special .post .image-intro {
    background-size: 100% 100%;
 }
+.hethongbanle .sub_page .page-grid .col-sm-3 .item {
+    overflow: hidden;
+}
+.hethongbanle .sub_page .page-grid .description {
+    margin-bottom: 20px;
+}
+.parent-pageid-818 .breadcrumbs  {
+    display: none!important;
+}
+body .hethongbanle .sub_page .more {
+    margin: 0px 0 18px 20px;
+}
+.page-hethong-banle .textwidget {
+    background: #f1f1f1 none repeat scroll 0 0
+}
+.page-hethong-banle .textwidget br{
+    display: none
+
+}
+#black-studio-tinymce-10 .textwidget { 
+    background: white;
+    margin: 20px 0;padding-top: 10px;
+}
+.page-hethong-banle .sidebar-left .textwidget li img {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+    text-align: center;
+}
+.page-hethong-banle  .sidebar-left .widget_nav_menu .menu  li a {
+        color: #333;
+        font-size: 14px;
+    font-weight: normal;
+    padding: 10px 25px;
+    text-transform: capitalize;
+}
+.the-content table{
+    max-width: 100%;
+}
 .category-special .image-intro  img {
     bottom: auto;
     height: 100%;

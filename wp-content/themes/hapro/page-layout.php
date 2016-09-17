@@ -15,7 +15,7 @@
 				'after'  => '</div>',
 			) );
 			?>
-			</div><!-- .entry-content -->
-			</article><!-- #post-## -->
-			<?php endwhile; // End of the loop.?>
-		</div>
+		</div><!-- .entry-content -->
+	</article><!-- #post-## -->
+	<?php endwhile; // End of the loop.?>
+</div>

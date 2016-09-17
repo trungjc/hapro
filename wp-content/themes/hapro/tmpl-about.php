@@ -1,6 +1,6 @@
 <?php
 /**
-* Template Name: giao diện có sub page
+* Template Name: giao diện 2 cột
 *
 * @package    WordPress
 * @subpackage Whispli
